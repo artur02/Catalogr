@@ -11,11 +11,29 @@
 
     <!-- Catalogr.Metro references -->
     <link href="/css/default.css" rel="stylesheet" />
-    <script src="/js/data.js"></script>
+    
     <script src="/js/navigator.js"></script>
     <script src="/js/default.js"></script>
+
+    <script src="/js/Infra/Logger.js"></script>
+
+    <script src="/js/Infra/Database.js"></script>
+    <script src="/js/SampleData.js"></script>
+
+    
+    
 </head>
 <body>
+
+    <script type="text/javascript">
+        console.log("Loading...");
+
+
+        var db = Database.create(CatalogrContext.dbName, 1);
+        SampleData.load(CatalogrContext.dbName, 1);
+    </script>
+
+    <script src="/js/data.js"></script>
     <div id="contenthost" data-win-control="Application.PageControlNavigator" data-win-options="{home: '/pages/groupedItems/groupedItems.html'}"></div>
     <!-- <div id="appbar" data-win-control="WinJS.UI.AppBar">
         <button data-win-control="WinJS.UI.AppBarCommand" data-win-options="{id:'cmd', label:'Command', icon:'placeholder'}" type="button"></button>
