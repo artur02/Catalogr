@@ -5,14 +5,28 @@
 
     WinJS.Namespace.define("Database", {
         create: function (name, version) {
-            var dbRequest = window.indexedDB.open(name, version);
+            return new WinJS.Promise(function(comp, err, prog) {
+                var dbRequest = window.indexedDB.open(name, version);
 
-            // Add asynchronous callback functions
-            dbRequest.onerror = function () { Logger.log && Logger.log("Error creating database.", "sample", "error"); };
-            dbRequest.onsuccess = function (evt) { dbSuccess(evt); };
-            dbRequest.onupgradeneeded = function (evt) { dbVersionUpgrade(evt); };
-            dbRequest.onblocked = function () { Logger.log && Logger.log("Database create blocked.", "sample", "error"); };
-            newCreate = false;
+                // Add asynchronous callback functions
+                dbRequest.onerror = function() {
+                    Logger.log && Logger.log("Error creating database.", "sample", "error");
+                    err();
+                };
+                dbRequest.onsuccess = function (evt) {
+                    var db = dbSuccess(evt);
+                    comp(db);
+                };
+                dbRequest.onupgradeneeded = function(evt) {
+                    dbVersionUpgrade(evt);
+                    comp();
+                };
+                dbRequest.onblocked = function() {
+                    Logger.log && Logger.log("Database create blocked.", "sample", "error");
+                    err();
+                };
+                newCreate = false;
+            });
         },
         read: function () {
             return new WinJS.Promise(function (comp, err, prog) {
@@ -26,8 +40,14 @@
                 var txn = context.db.transaction(["books", "authors", "checkout"], "readonly");
 
                 // Set the event callbacks for the transaction.
-                txn.onerror = function () { WinJS.log && WinJS.log("Error reading data.", "sample", "error"); };
-                txn.onabort = function () { WinJS.log && WinJS.log("Reading of data aborted.", "sample", "error"); };
+                txn.onerror = function () {
+                    WinJS.log && WinJS.log("Error reading data.", "sample", "error");
+                    err();
+                };
+                txn.onabort = function () {
+                    WinJS.log && WinJS.log("Reading of data aborted.", "sample", "error");
+                    err();
+                };
 
                 // The oncomplete event handler is called asynchronously once reading is finished and the data arrays are fully populated. This
                 // completion event will occur later than the cursor iterations defined below, because the transaction will not complete until
@@ -38,36 +58,6 @@
                         books: books,
                         authors: authors
                     });
-
-                    //var outputContent = "";
-
-                    //// If there are no books to display, there is no need to continue.
-                    //var len = books.length;
-                    //if (len === 0) {
-                    //    return;
-                    //}
-
-                    //// Set checkout status for each book. Because the checkout table containing status for each book is sparsely
-                    //// populated, we need to set the checkout status to 0 if it is not found in the checkouts array.
-                    //for (var i = 0; i < len; i++) {
-                    //    var bookId = books[i].id;
-                    //    if (checkouts[bookId]) {
-                    //        books[i].checkout = checkouts[bookId];
-                    //    }
-                    //    else {
-                    //        books[i].checkout = 0;
-                    //    }
-                    //}
-
-                    //// Construct an output table with one row per book.
-                    //outputContent = "<table><tr><th>Book</th><th>Author</th><th>Checked Out?</th></tr>";
-                    //for (i = 0; i < len; i++) {
-                    //    outputContent += "<tr><td>" + books[i].title + "</td><td>" + authors[books[i].authorid] + "</td><td><input type='checkbox' " + (books[i].checkout === 1 ? "disabled='disabled' checked='checked'" : "disabled='disabled'") + "/></tr>";
-                    //}
-
-                    //// Display the content.
-                    //var outputDiv = document.getElementById("dataOutput");
-                    //outputDiv.innerHTML = outputContent;
                 };
 
                 // Create a cursor on the books object store. Because we want the results to be returned in title order, we use the title index
@@ -125,10 +115,11 @@
         if (!newCreate) {
             // Close this additional database request
             var db = evt.target.result;
-            db.close();
+            context.db = db;
+            //db.close();
 
             Logger.log && Logger.log("Database schema already exists.", "sample", "error");
-            return;
+            return db;
         }
     }
 

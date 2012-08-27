@@ -14,6 +14,17 @@
             if (args.detail.previousExecutionState !== activation.ApplicationExecutionState.terminated) {
                 // TODO: This application has been newly launched. Initialize
                 // your application here.
+                
+                console.log("Loading...");
+
+
+                var db = Database.create(CatalogrContext.dbName, 1).then(function complete() {
+                    SampleData.load(CatalogrContext.dbName, 1);
+
+                    Data.generate();
+                });
+                
+
             } else {
                 // TODO: This application has been reactivated from suspension.
                 // Restore application state here.
@@ -31,11 +42,6 @@
                 }
             }));
         }
-    });
-
-    WinJS.Namespace.define("CatalogrContext", {
-        dbName: 'Catalogr.Books',
-        db: null,
     });
 
     app.oncheckpoint = function (args) {
