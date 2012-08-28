@@ -4,7 +4,39 @@
     WinJS.Namespace.define("Amazon", {
         getSignature: getSignature
     });
+
+    loadKeys();
+
+    var accessKeyId,
+        secretAccessKey;
     
+    function loadKeys() {
+        var foldername = "NoUpload";
+        var filename = "amazon.xml";
+
+        // Open folder.
+        Windows.ApplicationModel.Package.current.installedLocation.getFolderAsync(foldername).done(function(folder) {
+            // Open file
+            folder.getFileAsync(filename).done(function(file) {
+
+                // Prepare load settings.
+                var loadSettings = new Windows.Data.Xml.Dom.XmlLoadSettings;
+                loadSettings.prohibitDtd = false;
+                loadSettings.resolveExternals = false;
+
+                // Load XML - Important: We do this before opening the transaction to talk to the database, so the transaction won't expire.
+                Windows.Data.Xml.Dom.XmlDocument.loadFromFileAsync(file, loadSettings).done(function(xmlDoc) {
+                    // Load the books
+                    var accessKeyIdNode = xmlDoc.selectSingleNode('//accessKeyId');
+                    var secretAccessKeyNode = xmlDoc.selectSingleNode('//secretAccessKey');
+
+                    accessKeyId = accessKeyIdNode.innerText;
+                    secretAccessKey = secretAccessKeyNode.innerText;
+                });
+            });
+        });
+    }
+
     function getSignature(url) {
         var unsignedUrl = url;
         var lines = unsignedUrl.split("\n");
@@ -153,10 +185,10 @@
     }
     
     function getAccessKeyId() {
-        return document.getElementById('AWSAccessKeyId').value;
+        return accessKeyId;
     }
 
     function getSecretAccessKey() {
-        return document.getElementById('AWSSecretAccessKey').value;
+        return secretAccessKey;
     }
 })();

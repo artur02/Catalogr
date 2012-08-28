@@ -35,7 +35,7 @@
     </ProjectConfiguration>
   </ItemGroup>
   <PropertyGroup Label="Globals">
-    <ProjectGuid>0a2ccd2b-5345-4a8f-a084-7bd330522b8d</ProjectGuid>
+    <ProjectGuid>47e9bc70-2ccb-4989-bafc-30c7857f5a0c</ProjectGuid>
   </PropertyGroup>
   <PropertyGroup Condition="'$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '11.0'">
     <VisualStudioVersion>11.0</VisualStudioVersion>
@@ -47,54 +47,53 @@
     <TargetPlatformIdentifier>Windows</TargetPlatformIdentifier>
     <TargetPlatformVersion>8.0</TargetPlatformVersion>
     <DefaultLanguage>en-US</DefaultLanguage>
-    <PackageCertificateKeyFile>Catalogr.Metro_TemporaryKey.pfx</PackageCertificateKeyFile>
+    <PackageCertificateKeyFile>Catalogr.Metro.Tests_TemporaryKey.pfx</PackageCertificateKeyFile>
   </PropertyGroup>
   <ItemGroup>
     <AppxManifest Include="package.appxmanifest">
       <SubType>Designer</SubType>
     </AppxManifest>
-    <Content Include="BDD\AmazonTests.html" />
-    <Content Include="BDD\AmazonTests.js" />
-    <Content Include="BDD\default.html" />
-    <Content Include="BDD\ExampleTest.js" />
-    <Content Include="BDD\lib\chai.js" />
-    <Content Include="BDD\lib\mocha.css" />
-    <Content Include="BDD\lib\mocha.js" />
-    <Content Include="css\default.css" />
-    <Content Include="data\data.xml" />
+    <Content Include="..\Catalogr.Metro\js\Config.js">
+      <Link>SUT\Config.js</Link>
+    </Content>
+    <Content Include="..\Catalogr.Metro\js\data.js">
+      <Link>SUT\data.js</Link>
+    </Content>
+    <Content Include="..\Catalogr.Metro\js\default.js">
+      <Link>SUT\default.js</Link>
+    </Content>
+    <PRIResource Include="..\Catalogr.Metro\js\Infra\Amazon.js">
+      <Link>SUT\Infra\Amazon.js</Link>
+    </PRIResource>
+    <Content Include="..\Catalogr.Metro\js\Infra\Database.js">
+      <Link>SUT\Infra\Database.js</Link>
+    </Content>
+    <Content Include="..\Catalogr.Metro\js\Infra\Logger.js">
+      <Link>SUT\Infra\Logger.js</Link>
+    </Content>
+    <Content Include="..\Catalogr.Metro\js\navigator.js">
+      <Link>SUT\navigator.js</Link>
+    </Content>
+    <Content Include="..\Catalogr.Metro\js\SampleData.js">
+      <Link>SUT\SampleData.js</Link>
+    </Content>
+    <Content Include="default.html" />
     <Content Include="images\logo.png" />
     <Content Include="images\smalllogo.png" />
     <Content Include="images\splashscreen.png" />
     <Content Include="images\storelogo.png" />
-    <Content Include="js\Config.js" />
-    <Content Include="js\data.js" />
     <Content Include="js\default.js" />
-    <Content Include="js\External\jsSha2\docs\changes.txt" />
-    <Content Include="js\External\jsSha2\docs\readme.txt" />
-    <Content Include="js\External\jsSha2\license.txt" />
-    <Content Include="js\External\jsSha2\sha2.js" />
-    <Content Include="js\External\jsSha2\sha256.js" />
-    <Content Include="js\External\jsSha2\tests\sha2_test.htm" />
-    <Content Include="js\Infra\Amazon.js" />
-    <Content Include="js\Infra\Database.js" />
-    <Content Include="js\Infra\Logger.js" />
-    <Content Include="js\navigator.js" />
-    <Content Include="js\SampleData.js" />
-    <Content Include="NoUpload\amazon.xml" />
-    <Content Include="pages\itemDetail\itemDetail.css" />
-    <Content Include="pages\itemDetail\itemDetail.html" />
-    <Content Include="pages\itemDetail\itemDetail.js" />
-    <Content Include="pages\groupDetail\groupDetail.css" />
-    <Content Include="pages\groupDetail\groupDetail.html" />
-    <Content Include="pages\groupDetail\groupDetail.js" />
-    <Content Include="pages\groupedItems\groupedItems.css" />
-    <Content Include="pages\groupedItems\groupedItems.html" />
-    <Content Include="pages\groupedItems\groupedItems.js" />
-    <Content Include="default.html" />
-    <None Include="Catalogr.Metro_TemporaryKey.pfx" />
+    <Content Include="css\default.css" />
+    <Content Include="lib\chai.js" />
+    <Content Include="lib\mocha.css" />
+    <Content Include="lib\mocha.js" />
+    <None Include="Catalogr.Metro.Tests_TemporaryKey.pfx" />
   </ItemGroup>
   <ItemGroup>
     <SDKReference Include="Microsoft.WinJS.1.0, Version=1.0" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="SUT\Infra\" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\$(WMSJSProjectDirectory)\Microsoft.VisualStudio.$(WMSJSProject).targets" />
   <!-- To modify your build process, add your task inside one of the targets below then uncomment

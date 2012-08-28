@@ -57,6 +57,8 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="BDD\AmazonTests.html" />
+    <Content Include="BDD\AmazonTests.js" />
     <Content Include="BDD\default.html" />
     <Content Include="BDD\ExampleTest.js" />
     <Content Include="BDD\lib\chai.js" />
