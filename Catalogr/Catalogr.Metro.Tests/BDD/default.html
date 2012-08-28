@@ -1,0 +1,28 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" type="text/css" href="lib/mocha.css">
+    
+
+    <!--<script src="../Scripts/require.js"></script>-->
+    <script src="lib/mocha.js"></script>
+    <script src="lib/chai.js"></script>
+     <!-- choose the style that you want for tests first -->
+    <script>mocha.setup('bdd')</script>
+    <title></title>
+    
+    <script src="ExampleTest.js"></script>
+</head>
+    <body>
+        <div id="mocha">
+        <!-- This div is a hook for the test harness. -->
+    </div>
+
+        <script type="text/javascript">
+            var expect = chai.expect;
+            mocha.run();
+        </script>
+    </body>
+</html>

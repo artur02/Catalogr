@@ -3,6 +3,8 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2012
 Project("{262852C6-CD72-467D-83FE-5EEB1973A190}") = "Catalogr.Metro", "Catalogr.Metro\Catalogr.Metro.jsproj", "{0A2CCD2B-5345-4A8F-A084-7BD330522B8D}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Catalogr.Metro.Tests", "Catalogr.Metro.Tests\Catalogr.Metro.Tests.csproj", "{1DA52602-D709-45D6-86A6-A4E6E0CC2455}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,6 +41,16 @@ Global
 		{0A2CCD2B-5345-4A8F-A084-7BD330522B8D}.Release|x86.ActiveCfg = Release|x86
 		{0A2CCD2B-5345-4A8F-A084-7BD330522B8D}.Release|x86.Build.0 = Release|x86
 		{0A2CCD2B-5345-4A8F-A084-7BD330522B8D}.Release|x86.Deploy.0 = Release|x86
+		{1DA52602-D709-45D6-86A6-A4E6E0CC2455}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1DA52602-D709-45D6-86A6-A4E6E0CC2455}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1DA52602-D709-45D6-86A6-A4E6E0CC2455}.Debug|ARM.ActiveCfg = Debug|Any CPU
+		{1DA52602-D709-45D6-86A6-A4E6E0CC2455}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{1DA52602-D709-45D6-86A6-A4E6E0CC2455}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{1DA52602-D709-45D6-86A6-A4E6E0CC2455}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1DA52602-D709-45D6-86A6-A4E6E0CC2455}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1DA52602-D709-45D6-86A6-A4E6E0CC2455}.Release|ARM.ActiveCfg = Release|Any CPU
+		{1DA52602-D709-45D6-86A6-A4E6E0CC2455}.Release|x64.ActiveCfg = Release|Any CPU
+		{1DA52602-D709-45D6-86A6-A4E6E0CC2455}.Release|x86.ActiveCfg = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
