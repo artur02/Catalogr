@@ -62,6 +62,13 @@
     <Content Include="js\Config.js" />
     <Content Include="js\data.js" />
     <Content Include="js\default.js" />
+    <Content Include="js\External\jsSha2\docs\changes.txt" />
+    <Content Include="js\External\jsSha2\docs\readme.txt" />
+    <Content Include="js\External\jsSha2\license.txt" />
+    <Content Include="js\External\jsSha2\sha2.js" />
+    <Content Include="js\External\jsSha2\sha256.js" />
+    <Content Include="js\External\jsSha2\tests\sha2_test.htm" />
+    <Content Include="js\Infra\Amazon.js" />
     <Content Include="js\Infra\Database.js" />
     <Content Include="js\Infra\Logger.js" />
     <Content Include="js\navigator.js" />
@@ -80,6 +87,9 @@
   </ItemGroup>
   <ItemGroup>
     <SDKReference Include="Microsoft.WinJS.1.0, Version=1.0" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="NoUpload\" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\$(WMSJSProjectDirectory)\Microsoft.VisualStudio.$(WMSJSProject).targets" />
   <!-- To modify your build process, add your task inside one of the targets below then uncomment

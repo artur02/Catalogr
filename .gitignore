@@ -10,6 +10,8 @@
 *.user
 *.sln.docstates
 
+NoUpload/
+
 # Build results
 [Dd]ebug/
 [Rr]elease/
