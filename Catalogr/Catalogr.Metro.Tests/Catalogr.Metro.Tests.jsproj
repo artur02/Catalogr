@@ -62,9 +62,9 @@
     <Content Include="..\Catalogr.Metro\js\default.js">
       <Link>SUT\default.js</Link>
     </Content>
-    <PRIResource Include="..\Catalogr.Metro\js\Infra\Amazon.js">
+    <Content Include="..\Catalogr.Metro\js\Infra\Amazon.js">
       <Link>SUT\Infra\Amazon.js</Link>
-    </PRIResource>
+    </Content>
     <Content Include="..\Catalogr.Metro\js\Infra\Database.js">
       <Link>SUT\Infra\Database.js</Link>
     </Content>

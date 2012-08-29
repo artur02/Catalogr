@@ -2,36 +2,39 @@
     "use strict";
     
     WinJS.Namespace.define("Amazon", {
+        loadKeys: loadKeys,
         getSignature: getSignature
     });
-
-    loadKeys();
 
     var accessKeyId,
         secretAccessKey;
     
     function loadKeys() {
-        var foldername = "NoUpload";
-        var filename = "amazon.xml";
+        return new WinJS.Promise(function(comp, err, prog) {
+            var foldername = "NoUpload";
+            var filename = "amazon.xml";
 
-        // Open folder.
-        Windows.ApplicationModel.Package.current.installedLocation.getFolderAsync(foldername).done(function(folder) {
-            // Open file
-            folder.getFileAsync(filename).done(function(file) {
+            // Open folder.
+            Windows.ApplicationModel.Package.current.installedLocation.getFolderAsync(foldername).done(function(folder) {
+                // Open file
+                folder.getFileAsync(filename).done(function(file) {
 
-                // Prepare load settings.
-                var loadSettings = new Windows.Data.Xml.Dom.XmlLoadSettings;
-                loadSettings.prohibitDtd = false;
-                loadSettings.resolveExternals = false;
+                    // Prepare load settings.
+                    var loadSettings = new Windows.Data.Xml.Dom.XmlLoadSettings;
+                    loadSettings.prohibitDtd = false;
+                    loadSettings.resolveExternals = false;
 
-                // Load XML - Important: We do this before opening the transaction to talk to the database, so the transaction won't expire.
-                Windows.Data.Xml.Dom.XmlDocument.loadFromFileAsync(file, loadSettings).done(function(xmlDoc) {
-                    // Load the books
-                    var accessKeyIdNode = xmlDoc.selectSingleNode('//accessKeyId');
-                    var secretAccessKeyNode = xmlDoc.selectSingleNode('//secretAccessKey');
+                    // Load XML - Important: We do this before opening the transaction to talk to the database, so the transaction won't expire.
+                    Windows.Data.Xml.Dom.XmlDocument.loadFromFileAsync(file, loadSettings).done(function(xmlDoc) {
+                        // Load the books
+                        var accessKeyIdNode = xmlDoc.selectSingleNode('//accessKeyId');
+                        var secretAccessKeyNode = xmlDoc.selectSingleNode('//secretAccessKey');
 
-                    accessKeyId = accessKeyIdNode.innerText;
-                    secretAccessKey = secretAccessKeyNode.innerText;
+                        accessKeyId = accessKeyIdNode.innerText;
+                        secretAccessKey = secretAccessKeyNode.innerText;
+
+                        comp();
+                    });
                 });
             });
         });
@@ -166,22 +169,12 @@
         var urlhash = encodeURIComponent(b64hash);
 
         return urlhash;
-    }
+    }    
     
-    Date.prototype.toISODate =
-	      new Function("with (this)\n    return " +
-		 "getFullYear()+'-'+addZero(getMonth()+1)+'-'" +
-		 "+addZero(getDate())+'T'+addZero(getHours())+':'" +
-		 "+addZero(getMinutes())+':'+addZero(getSeconds())+'.000Z'");
-    
-    function addZero(n) {
-        return (n < 0 || n > 9 ? "" : "0") + n;
-    }
 
     function getNowTimeStamp() {
         var time = new Date();
-        var gmtTime = new Date(time.getTime() + (time.getTimezoneOffset() * 60000));
-        return gmtTime.toISODate();
+        return time.toISOString();
     }
     
     function getAccessKeyId() {

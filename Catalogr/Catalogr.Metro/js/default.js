@@ -22,6 +22,11 @@
                     SampleData.load(CatalogrContext.dbName, 1);
 
                     Data.generate();
+
+                    Amazon.loadKeys().then(function() {
+                        var sig = Amazon.getSignature("http://ecs.amazonaws.co.uk/onca/xml?Service=AWSECommerceService&AWSAccessKeyId=AKIAJOHMUMYIJ43O4DJQ&Operation=ItemSearch&Actor=Johnny%20Depp&ResponseGroup=ItemAttributes,Offers,Images,Reviews,Variations&SearchIndex=DVD&Sort=salesrank&AssociateTag=mytag-20");
+
+                    });
                 });
                 
 
