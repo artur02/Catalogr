@@ -98,8 +98,14 @@
                             Title: book.title,
                             ResponseGroup: 'ItemAttributes,Images'
                         }).then(function(res) {
-                            var urlNodes = res.mediumImage.getElementsByTagName("URL");
+                            var urlNodes = res.largeImage.getElementsByTagName("URL");
+                            var widthNodes = res.largeImage.getElementsByTagName("Width");
+                            var heightNodes = res.largeImage.getElementsByTagName("Height");
                             item.backgroundImage = urlNodes[0].innerText;
+                            var actualHeight = heightNodes[0].innerText;
+                            item.backgroundImageHeight = 250;
+                            item.backgroundImageWidth = 250/actualHeight*widthNodes[0].innerText;
+                            
                         });
                         
 

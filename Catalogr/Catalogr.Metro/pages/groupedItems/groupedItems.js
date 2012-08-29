@@ -43,10 +43,10 @@
             var listView = element.querySelector(".groupeditemslist").winControl;
             if (lastViewState !== viewState) {
                 if (lastViewState === appViewState.snapped || viewState === appViewState.snapped) {
-                    var handler = function (e) {
+                    var handler = function(e) {
                         listView.removeEventListener("contentanimating", handler, false);
                         e.preventDefault();
-                    }
+                    };
                     listView.addEventListener("contentanimating", handler, false);
                     this._initializeLayout(listView, viewState);
                 }

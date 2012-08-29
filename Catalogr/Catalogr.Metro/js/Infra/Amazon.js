@@ -240,9 +240,9 @@
                         var doc = new Windows.Data.Xml.Dom.XmlDocument();
                         doc.loadXml(xml, loadSettings);
 
-                        var image = doc.getElementsByTagName("MediumImage");
                         comp({
-                            mediumImage: image[0]
+                            mediumImage: doc.getElementsByTagName("MediumImage")[0],
+                            largeImage: doc.getElementsByTagName("LargeImage")[0]
                         });
                     },
                     function error(request) {
