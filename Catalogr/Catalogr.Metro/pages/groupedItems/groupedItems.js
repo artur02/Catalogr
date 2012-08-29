@@ -34,6 +34,8 @@
 
             this._initializeLayout(listView, appView.value);
             listView.element.focus();
+            
+            document.getElementById("cmdAdd").addEventListener("click", doClickAdd, false);
         },
 
         // This function updates the page layout in response to viewState changes.
@@ -80,4 +82,23 @@
             }
         }
     });
+    
+    // Command button functions
+    function doClickAdd() {
+        var msg = new Windows.UI.Popups.MessageDialog("You can add a new book here.", "Add new book");
+
+        // Add commands and set their CommandIds
+        msg.commands.append(new Windows.UI.Popups.UICommand("Add", null, 1));
+        msg.commands.append(new Windows.UI.Popups.UICommand("Close", null, 2));
+
+        // Set the command that will be invoked by default
+        msg.defaultCommandIndex = 2;
+
+        // Show the message dialog
+        msg.showAsync().done(function (command) {
+            if (command) {
+                console.log('dlg');
+            }
+        });
+    }
 })();
