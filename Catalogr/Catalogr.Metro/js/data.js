@@ -89,9 +89,22 @@
 
                 var sampleItems = [];
                 res.books.forEach(function (book) {
-                    sampleItems.push(
-                        { group: sampleGroups[book.authorid], title: book.title, subtitle: "Item Subtitle: 1", description: itemDescription, content: itemContent, backgroundImage: lightGray }
-                    );
+                    var item = { group: sampleGroups[book.authorid], title: book.title, subtitle: "Item Subtitle: 1", description: itemDescription, content: itemContent, backgroundImage: lightGray };
+
+                    Amazon.loadKeys().then(function () {
+
+                        Amazon.bookSearch.getDetails({
+                            Author: res.authors[book.authorid],
+                            Title: book.title,
+                            ResponseGroup: 'ItemAttributes,Images'
+                        }).then(function(res) {
+                            var urlNodes = res.mediumImage.getElementsByTagName("URL");
+                            item.backgroundImage = urlNodes[0].innerText;
+                        });
+                        
+
+                    });
+                    sampleItems.push(item);
                 });
 
                 comp(sampleItems);

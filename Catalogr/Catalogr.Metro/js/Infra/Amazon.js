@@ -3,7 +3,8 @@
     
     WinJS.Namespace.define("Amazon", {
         loadKeys: loadKeys,
-        getSignature: getSignature
+        getSignature: getSignature,
+        bookSearch: new BookSearch()
     });
 
     var accessKeyId,
@@ -183,5 +184,79 @@
 
     function getSecretAccessKey() {
         return secretAccessKey;
+    }
+    
+    function BookSearch() {
+        //http://ecs.amazonaws.co.uk/onca/xml?
+        //Service=AWSECommerceService
+        //    &AWSAccessKeyId=AKIAJOHMUMYIJ43O4DJQ
+        //        &Operation=ItemSearch
+        //            &Actor=Johnny%20Depp
+        //                &ResponseGroup=ItemAttributes,Offers,Images,Reviews,Variations
+        //                    &SearchIndex=DVD
+        //                        &Sort=salesrank
+        //                            &AssociateTag=mytag-20
+        
+        function buildUrl(params) {
+            var domain = "ecs.amazonaws.co.uk/onca/xml?",
+                parameters = [];
+
+
+            params.Service = 'AWSECommerceService';
+            params.AWSAccessKeyId = getAccessKeyId();
+            params.Operation = 'ItemSearch';
+            params.SearchIndex = 'Books';
+            params.AssociateTag = 'mytag-20';
+            
+            var paramKeys = Object.keys(params);
+            paramKeys.forEach(function(key) {
+                var param = key + "=" + params[key];
+                parameters.push(param);
+            });
+
+            var url = "http://" + domain + parameters.join('&');
+            return url;
+        }
+
+        function getDetails(params) {
+            return new WinJS.Promise(function(comp, err) {
+
+                //var url = "http://ecs.amazonaws.co.uk/onca/xml?Service=AWSECommerceService&AWSAccessKeyId=AKIAJOHMUMYIJ43O4DJQ&Operation=ItemSearch&Author=Homer&ResponseGroup=ItemAttributes,Images,Variations&SearchIndex=Books&Sort=salesrank&AssociateTag=mytag-20";
+                var url = buildUrl(params);
+                url = getSignature(url);
+
+                var xml;
+                WinJS.xhr({ url: url }).done(
+                    function completed(request) {
+                        // handle completed download.
+                        xml = request.response;
+
+                        // Prepare load settings.
+                        var loadSettings = new Windows.Data.Xml.Dom.XmlLoadSettings;
+                        loadSettings.prohibitDtd = false;
+                        loadSettings.resolveExternals = false;
+
+                        // Load XML - Important: We do this before opening the transaction to talk to the database, so the transaction won't expire.
+                        var doc = new Windows.Data.Xml.Dom.XmlDocument();
+                        doc.loadXml(xml, loadSettings);
+
+                        var image = doc.getElementsByTagName("MediumImage");
+                        comp({
+                            mediumImage: image[0]
+                        });
+                    },
+                    function error(request) {
+                        // handle error conditions.
+                        console.log('error');
+                    },
+                    function progress(request) {
+                        // report on progress of download.
+                    });
+            });
+        }
+
+        return {
+            getDetails: getDetails
+        };
     }
 })();
