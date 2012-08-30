@@ -8,6 +8,14 @@
         // populates the page elements with the app's data.
         ready: function (element, options) {
             // TODO: Initialize the page here.
+            var authorSelector = document.getElementById('authorSelector');
+            var templateElement = document.getElementById("templateDiv");
+            authorSelector.innerHTML = "";
+
+            var templateControl = templateElement.winControl;
+            Data.groups.forEach(function(group) {
+                templateControl.render(group, authorSelector);
+            });
         },
 
         unload: function () {

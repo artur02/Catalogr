@@ -12,24 +12,52 @@
     <link href="addNewBook.css" rel="stylesheet" />
     <script src="addNewBook.js"></script>
 </head>
-<body>
-    <div class="addNewBook fragment">
-        <header aria-label="Header content" role="banner">
-            <button class="win-backbutton" aria-label="Back" disabled type="button"></button>
-            <h1 class="titlearea win-type-ellipsis">
-                <span class="pagetitle">Add book to collection</span>
-            </h1>
-        </header>
-        <section aria-label="Main content" role="main">
-            <h2>Author</h2>
-            <p>
-                <div id="authors">
-                    <label title="The name of the author" for="authorId">Name</label><input id="authorId" type="text"/>
-                    <button>Add more...</button>
-                </div>
-                
-            </p>
-        </section>
-    </div>
-</body>
+    <body>
+        <div id="templateDiv" data-win-control="WinJS.Binding.Template">
+            <option data-win-bind="text:title"></option>
+        </div>
+
+        <div class="addNewBook fragment">
+            <header aria-label="Header content" role="banner">
+                <button class="win-backbutton" aria-label="Back" disabled type="button"></button>
+                <h1 class="titlearea win-type-ellipsis">
+                    <span class="pagetitle">Add book to collection</span>
+                </h1>
+            </header>
+            <section class="content" aria-label="Main content" role="main">
+                <article>
+                    <header>
+                        <h2>Authors</h2>
+                    </header>
+                    <div class="item-content selectauthor">
+                        <select id="authorSelector" data-win-bind="">
+                            <option>test</option>
+                            <option>test2</option>
+                            <option>test3</option>
+                            <option>test4</option>
+                        </select>
+                    </div>
+                    or
+                    <div class="item-content newauthor" id="newauthor">
+                        <label title="The name of the author" for="authorId">Name</label><input id="authorId" type="text"/>
+                        <button>+</button>
+                    </div>
+                </article>
+                <article>
+                    <header>
+                        <h2>Book</h2>
+                    </header>
+                    <div class="item-content bookdetails" id="Div1">
+                        <label title="The title of the book" for="title">Title</label><input id="title" type="text"/>
+                    </div>
+                </article>
+            
+            </section>
+        
+            <div id="createAppBar" data-win-control="WinJS.UI.AppBar" data-win-options="">
+                <button data-win-control="WinJS.UI.AppBarCommand" data-win-options="{id:'cmdSave',label:'Save',icon:'save',section:'global',tooltip:'Save book'}">
+                </button>
+            </div>
+        </div>
+    </body>
 </html>
