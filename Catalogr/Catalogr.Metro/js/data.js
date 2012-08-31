@@ -1,4 +1,4 @@
-﻿(function () {
+﻿define(["Infra/database", "Infra/amazon"], function (database, amazon) {
     "use strict";
 
     var list = new WinJS.Binding.List();
@@ -9,23 +9,7 @@
 
     
 
-    WinJS.Namespace.define("Data", {
-        items: groupedItems,
-        groups: groupedItems.groups,
-        getItemReference: getItemReference,
-        getItemsFromGroup: getItemsFromGroup,
-        resolveGroupReference: resolveGroupReference,
-        resolveItemReference: resolveItemReference,
-        generate: function(){
-            // TODO: Replace the data with your real data.
-            // You can add data from asynchronous sources whenever it becomes available.
-            generateSampleData().then(function complete(res) {
-                res.forEach(function (item) {
-                    list.push(item);
-                });
-            });
-        }
-    });
+    
 
     // Get a reference for an item, using the group key and item title as a
     // unique reference to the item that can be easily serialized.
@@ -65,7 +49,7 @@
         return new WinJS.Promise(function (comp, err, prog) {
 
 
-            var data = Database.read().then(function complete(res) {
+            var data = database.read().then(function complete(res) {
 
 
 
@@ -91,9 +75,9 @@
                 res.books.forEach(function (book) {
                     var item = { group: sampleGroups[book.authorid], title: book.title, subtitle: "Item Subtitle: 1", description: itemDescription, content: itemContent, backgroundImage: lightGray };
 
-                    Amazon.loadKeys().then(function () {
+                    amazon.loadKeys().then(function () {
 
-                        Amazon.bookSearch.getDetails({
+                        amazon.bookSearch.getDetails({
                             Author: res.authors[book.authorid],
                             Title: book.title,
                             ResponseGroup: 'ItemAttributes,Images'
@@ -119,4 +103,22 @@
     }
 
 
-})();
+    return {
+        items: groupedItems,
+        groups: groupedItems.groups,
+        getItemReference: getItemReference,
+        getItemsFromGroup: getItemsFromGroup,
+        resolveGroupReference: resolveGroupReference,
+        resolveItemReference: resolveItemReference,
+        generate: function () {
+            // TODO: Replace the data with your real data.
+            // You can add data from asynchronous sources whenever it becomes available.
+            generateSampleData().then(function complete(res) {
+                res.forEach(function (item) {
+                    list.push(item);
+                });
+            });
+        }
+    };
+
+});

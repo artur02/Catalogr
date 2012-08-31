@@ -17,12 +17,23 @@
                 
                 console.log("Loading...");
 
-
-                var db = Database.create(CatalogrContext.dbName, 1).then(function complete() {
-                    SampleData.load(CatalogrContext.dbName, 1);
-
-                    Data.generate();
+                require.config({
+                    baseUrl: 'js'
                 });
+
+                require(["config", "Infra/logger", "Infra/database", "sampleData", "data"], function (config, logger, database, sampleData, data) {
+                    var db = database.create(config.dbName, 1).then(function complete() {
+                        sampleData.load(config.dbName, 1);
+
+                        data.generate();
+                    });
+                    
+
+                    console.log('navigator');
+                });
+
+
+                
                 
 
             } else {
@@ -54,3 +65,5 @@
 
     app.start();
 })();
+
+
