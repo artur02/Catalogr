@@ -11,24 +11,27 @@
         // This function is called whenever a user navigates to this page. It
         // populates the page elements with the app's data.
         ready: function (element, options) {
-            var listView = element.querySelector(".itemslist").winControl;
-            var group = (options && options.groupKey) ? Data.resolveGroupReference(options.groupKey) : Data.groups.getAt(0);
-            this._items = Data.getItemsFromGroup(group);
-            var pageList = this._items.createGrouped(
-                function groupKeySelector(item) { return group.key; },
-                function groupDataSelector(item) { return group; }
-            );
+            var _this = this;
+            require(["data"], function(data){
+                var listView = element.querySelector(".itemslist").winControl;
+                var group = (options && options.groupKey) ? data.resolveGroupReference(options.groupKey) : data.groups.getAt(0);
+                _this._items = data.getItemsFromGroup(group);
+                var pageList = _this._items.createGrouped(
+                    function groupKeySelector(item) { return group.key; },
+                    function groupDataSelector(item) { return group; }
+                );
 
-            element.querySelector("header[role=banner] .pagetitle").textContent = group.title;
+                element.querySelector("header[role=banner] .pagetitle").textContent = group.title;
 
-            listView.itemDataSource = pageList.dataSource;
-            listView.itemTemplate = element.querySelector(".itemtemplate");
-            listView.groupDataSource = pageList.groups.dataSource;
-            listView.groupHeaderTemplate = element.querySelector(".headertemplate");
-            listView.oniteminvoked = this._itemInvoked.bind(this);
+                listView.itemDataSource = pageList.dataSource;
+                listView.itemTemplate = element.querySelector(".itemtemplate");
+                listView.groupDataSource = pageList.groups.dataSource;
+                listView.groupHeaderTemplate = element.querySelector(".headertemplate");
+                listView.oniteminvoked = _this._itemInvoked.bind(_this);
 
-            this._initializeLayout(listView, Windows.UI.ViewManagement.ApplicationView.value);
-            listView.element.focus();
+                _this._initializeLayout(listView, Windows.UI.ViewManagement.ApplicationView.value);
+                listView.element.focus();
+            });
         },
 
         unload: function () {
@@ -42,10 +45,10 @@
             var listView = element.querySelector(".itemslist").winControl;
             if (lastViewState !== viewState) {
                 if (lastViewState === appViewState.snapped || viewState === appViewState.snapped) {
-                    var handler = function (e) {
+                    var handler = function(e) {
                         listView.removeEventListener("contentanimating", handler, false);
                         e.preventDefault();
-                    }
+                    };
                     listView.addEventListener("contentanimating", handler, false);
                     var firstVisible = listView.indexOfFirstVisible;
                     this._initializeLayout(listView, viewState);
@@ -68,8 +71,11 @@
         },
 
         _itemInvoked: function (args) {
-            var item = this._items.getAt(args.detail.itemIndex);
-            WinJS.Navigation.navigate("/pages/itemDetail/itemDetail.html", { item: Data.getItemReference(item) });
+            var _this = this;
+            require(["data"], function(data) {
+                var item = _this._items.getAt(args.detail.itemIndex);
+                WinJS.Navigation.navigate("/pages/itemDetail/itemDetail.html", { item: data.getItemReference(item) });
+            });
         }
     });
 })();
