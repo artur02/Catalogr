@@ -86,6 +86,7 @@
     <Content Include="pages\addNewBook\addNewBook.css" />
     <Content Include="pages\addNewBook\addNewBook.html" />
     <Content Include="pages\addNewBook\addNewBook.js" />
+    <Content Include="pages\groupedItems\viewmodel.js" />
     <Content Include="pages\itemDetail\itemDetail.css" />
     <Content Include="pages\itemDetail\itemDetail.html" />
     <Content Include="pages\itemDetail\itemDetail.js" />

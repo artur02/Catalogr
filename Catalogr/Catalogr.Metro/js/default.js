@@ -25,7 +25,7 @@
                     var db = database.create(config.dbName, 1).then(function complete() {
                         sampleData.load(config.dbName, 1);
 
-                        data.generate();
+                        //data.generate();
                     });
                     
 
