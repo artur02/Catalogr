@@ -1,4 +1,4 @@
-﻿define(["config", "Infra/logger"], function(config, logger) {
+﻿define(["config", "Infra/logger", "Infra/database"], function(config, logger, database) {
     "use strict";
 
     function dbSuccess(evt, dbname, version) {
@@ -60,46 +60,15 @@
                             authors.push(author);
                         }
 
-                        // Open our database tables.
-                        var txn = config.db.transaction(["books", "authors"], "readwrite");
-                        txn.oncomplete = function () {
-                            logger.log("Database populated.", "sample", "status");
-                        };
-                        txn.onerror = function () {
-                            logger.error("Unable to populate database or database already populated.", "sample", "error");
-                        };
-                        txn.onabort = function () {
-                            logger.error("Unable to populate database or database already populated.", "sample", "error");
-                        };
-
-                        var booksStore = txn.objectStore("books");
-                        var authorsStore = txn.objectStore("authors");
-
-                        // Write books to IndexedDB table.
-                        len = books.length;
-                        for (i = 0; i < len; i++) {
-                            var addResult = booksStore.add(books[i]);
-                            addResult.book = books[i].title;
-                            addResult.onsuccess = function () {
-                                //output.innerHTML += "Added book: " + this.book + ".<br />";
-                            };
-                            addResult.onerror = function () {
-                                logger.error("Failed to add book: " + this.book + ".", "sample", "error");
-                            };
-                        }
-
-                        // Write authors to IndexedDB table.
-                        len = authors.length;
-                        for (i = 0; i < len; i++) {
-                            addResult = authorsStore.add(authors[i]);
-                            addResult.author = authors[i].name;
-                            addResult.onsuccess = function () {
-                                //output.innerHTML += "Added author: " + this.author + ".<br />";
-                            };
-                            addResult.onerror = function () {
-                                logger.error("Failed to add author: " + this.author + ".", "sample", "error");
-                            };
-                        }
+                        database.addBooks(books).then(function () {
+                            logger.info("Sample data - books stored");
+                            return database.addAuthors(authors);
+                        }).done(function () {
+                                logger.info("Sample data - authors stored");
+                            },
+                            function(err) {
+                                logger.error(err);
+                            });
                     });
                 });
             });
