@@ -10,7 +10,7 @@
         return new WinJS.Promise(function (comp, err, prog) {
 
 
-            var data = database.read().then(function complete(res) {
+            database.read().then(function(res) {
 
                 authors = res.authors;
                 books = res.books;
