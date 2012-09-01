@@ -37,15 +37,15 @@
             var authors = [];
 
             // Create a transaction with which to query the IndexedDB.
-            var txn = config.db.transaction(["books", "authors", "checkout"], "readonly");
+            var txn = db.transaction(["books", "authors", "checkout"], "readonly");
 
             // Set the event callbacks for the transaction.
             txn.onerror = function () {
-                WinJS.log && WinJS.log("Error reading data.", "sample", "error");
+                logger.log("Error reading data.", "sample", "error");
                 err();
             };
             txn.onabort = function () {
-                WinJS.log && WinJS.log("Reading of data aborted.", "sample", "error");
+                logger.log("Reading of data aborted.", "sample", "error");
                 err();
             };
 
@@ -98,19 +98,6 @@
         if(!db) {
             db = evt.target.result;
         }
-
-
-        /*
-        // Log whether the app tried to create the database when it already existed. 
-        if (!newCreate) {
-            // Close this additional database request
-            var db = evt.target.result;
-            config.db = db;
-
-            logger.log("Database schema already exists.", "sample", "error");
-            return db;
-        }
-        */
     }
 
     // Whenever an IndexedDB is created, the version is set to "", but can be immediately upgraded by calling createDB. 
@@ -128,11 +115,11 @@
 
         // Create the books object store, with an index on the book title. Note that we set the returned object store to a variable
         // in order to make further calls (index creation) on that object store.
-        var bookStore = config.db.createObjectStore("books", { keyPath: "id", autoIncrement: true });
+        var bookStore = db.createObjectStore("books", { keyPath: "id", autoIncrement: true });
         bookStore.createIndex("title", "title", { unique: false });
 
         // Create the authors object store.
-        config.db.createObjectStore("authors", { keyPath: "id" });
+        db.createObjectStore("authors", { keyPath: "id" });
 
         // Once the creation of the object stores is finished (they are created asynchronously), log success.
         txn.oncomplete = function () { logger.log("Database schema created.", "sample", "status"); };
