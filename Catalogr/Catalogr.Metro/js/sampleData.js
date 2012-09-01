@@ -8,7 +8,7 @@
         }
         config.db = evt.target.result;
         if (config.db.objectStoreNames.length === 0) {
-            logger.log("Database schema does not exist. Complete the first scenario before continuing.", "sample", "error");
+            logger.error("Database schema does not exist. Complete the first scenario before continuing.", "sample", "error");
             config.db.close();
             config.db = null;
             window.indexedDB.deleteDatabase(dbname, version);
@@ -66,10 +66,10 @@
                             logger.log("Database populated.", "sample", "status");
                         };
                         txn.onerror = function () {
-                            logger.log("Unable to populate database or database already populated.", "sample", "error");
+                            logger.error("Unable to populate database or database already populated.", "sample", "error");
                         };
                         txn.onabort = function () {
-                            logger.log("Unable to populate database or database already populated.", "sample", "error");
+                            logger.error("Unable to populate database or database already populated.", "sample", "error");
                         };
 
                         var booksStore = txn.objectStore("books");
@@ -84,7 +84,7 @@
                                 //output.innerHTML += "Added book: " + this.book + ".<br />";
                             };
                             addResult.onerror = function () {
-                                logger.log("Failed to add book: " + this.book + ".", "sample", "error");
+                                logger.error("Failed to add book: " + this.book + ".", "sample", "error");
                             };
                         }
 
@@ -97,7 +97,7 @@
                                 //output.innerHTML += "Added author: " + this.author + ".<br />";
                             };
                             addResult.onerror = function () {
-                                logger.log("Failed to add author: " + this.author + ".", "sample", "error");
+                                logger.error("Failed to add author: " + this.author + ".", "sample", "error");
                             };
                         }
                     });
@@ -114,10 +114,10 @@
             var dbRequest = window.indexedDB.open(dbname, version);
 
             // Add asynchronous callback functions
-            dbRequest.onerror = function () { logger.log("Error opening database.", "sample", "error"); };
+            dbRequest.onerror = function () { logger.error("Error opening database.", "sample", "error"); };
             dbRequest.onsuccess = function (evt) { dbSuccess(evt, dbname, version); };
-            dbRequest.onupgradeneeded = function (evt) { logger.log("Database wrong version.", "sample", "error"); if (SdkSample.db) { SdkSample.db.close(); } };
-            dbRequest.onblocked = function () { logger.log("Database access blocked.", "sample", "error"); };
+            dbRequest.onupgradeneeded = function (evt) { logger.error("Database wrong version.", "sample", "error"); if (config.db) { config.db.close(); } };
+            dbRequest.onblocked = function () { logger.error("Database access blocked.", "sample", "error"); };
         }
     };
 

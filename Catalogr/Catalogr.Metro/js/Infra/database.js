@@ -10,7 +10,7 @@
 
             // Add asynchronous callback functions
             dbRequest.onerror = function () {
-                logger.log("Error creating database.", "sample", "error");
+                logger.error("Error creating database.", "sample", "error");
                 err();
             };
             dbRequest.onsuccess = function (evt) {
@@ -22,7 +22,7 @@
                 comp();
             };
             dbRequest.onblocked = function () {
-                logger.log("Database create blocked.", "sample", "error");
+                logger.error("Database create blocked.", "sample", "error");
                 err();
             };
             newCreate = false;
@@ -41,11 +41,11 @@
 
             // Set the event callbacks for the transaction.
             txn.onerror = function () {
-                logger.log("Error reading data.", "sample", "error");
+                logger.error("Error reading data.", "sample", "error");
                 err();
             };
             txn.onabort = function () {
-                logger.log("Reading of data aborted.", "sample", "error");
+                logger.error("Reading of data aborted.", "sample", "error");
                 err();
             };
 
