@@ -26,6 +26,9 @@
                         
                         });
 
+                require(['/js/Infra/templateLoader.js'], function(loader) {
+                    loader.load('pages');
+                });
 
                 Ember.TEMPLATES["my_cool_template"] = Ember.Handlebars.compile('<b>{{name}}</b>');
                 Ember.TEMPLATES["hello"] = Ember.Handlebars.compile('Hello, <b>{{name}}</b>');
