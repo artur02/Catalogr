@@ -1,24 +1,8 @@
 ﻿define(["config", "Infra/logger", "Infra/database"], function(config, logger, database) {
     "use strict";
 
-    function dbSuccess(evt, dbname, version) {
-        // If the database was previously loaded, close it... this keeps the database from becoming blocked for later deletes
-        if (config.db) {
-            config.db.close();
-        }
-        config.db = evt.target.result;
-        if (config.db.objectStoreNames.length === 0) {
-            logger.error("Database schema does not exist. Complete the first scenario before continuing.", "sample", "error");
-            config.db.close();
-            config.db = null;
-            window.indexedDB.deleteDatabase(dbname, version);
-        } else {
-            loadData(evt);
-        }
-    }
-
     function loadData(evt) {
-        if (evt.type === "success") {
+        
             var books = [];
             var authors = [];
             var foldername = "data";
@@ -72,21 +56,17 @@
                     });
                 });
             });
-        }
     }
     
     return {
         load: function startLoadData(dbname, version) {
-            // Create the request to open the database, named BookDB, and if it doesn't exist, create it and immediately
-            // upgrade to version 1.
+            return new WinJS.Promise(function(comp, err) {
+                database.open(dbname, version).done(function (res) {
+                    loadData(res);
 
-            var dbRequest = window.indexedDB.open(dbname, version);
-
-            // Add asynchronous callback functions
-            dbRequest.onerror = function () { logger.error("Error opening database.", "sample", "error"); };
-            dbRequest.onsuccess = function (evt) { dbSuccess(evt, dbname, version); };
-            dbRequest.onupgradeneeded = function (evt) { logger.error("Database wrong version.", "sample", "error"); if (config.db) { config.db.close(); } };
-            dbRequest.onblocked = function () { logger.error("Database access blocked.", "sample", "error"); };
+                    comp();
+                });
+            });
         }
     };
 

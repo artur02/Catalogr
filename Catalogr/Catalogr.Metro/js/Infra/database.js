@@ -17,15 +17,23 @@
 
     function open(name, version) {
         return new WinJS.Promise(function (comp, err, prog) {
+            // TODO store database in cache by name and version
+            if (db) {
+                comp(db);
+            }
+
             var dbRequest = window.indexedDB.open(name, version);
 
             // Add asynchronous callback functions
             dbRequest.onerror = function () {
-                logger.error("Error creating database.", "sample", "error");
-                err();
+                var error = "Error creating database";
+                logger.error(error);
+                err(new Error(error));
             };
             dbRequest.onsuccess = function (evt) {
-                var db = dbSuccess(evt);
+                if (!db) {
+                    db = evt.target.result;
+                }
                 comp(db);
             };
             dbRequest.onupgradeneeded = function (evt) {
@@ -42,6 +50,7 @@
     
     function read() {
         return new WinJS.Promise(function (comp, err, prog) {
+            open();
 
             // Declare arrays to hold the data to be read.
             var books = [];
@@ -103,13 +112,6 @@
             };
         });
     }
-    
-
-    function dbSuccess(evt) {
-        if(!db) {
-            db = evt.target.result;
-        }
-    }
 
     // Whenever an IndexedDB is created, the version is set to "", but can be immediately upgraded by calling createDB. 
     function dbVersionUpgrade(evt) {
@@ -140,7 +142,7 @@
     function addBooks(books) {
         return new WinJS.Promise(function(comp, err) {
 
-            var txn = config.db.transaction([objectStores.books], transactionMode.readwrite);
+            var txn = db.transaction([objectStores.books], transactionMode.readwrite);
             txn.oncomplete = function() {
                 logger.info("Database populated.", "sample", "status");
                 comp();
@@ -174,7 +176,7 @@
     function addAuthors(authors) {
         return new WinJS.Promise(function(comp, err) {
 
-            var txn = config.db.transaction([objectStores.authors], transactionMode.readwrite);
+            var txn = db.transaction([objectStores.authors], transactionMode.readwrite);
             txn.oncomplete = function () {
                 logger.log("Database populated.", "sample", "status");
                 comp();
@@ -207,6 +209,7 @@
 
     return {
         create: open,
+        open: open,
         read: read,
         addBooks: addBooks,
         addAuthors: addAuthors
