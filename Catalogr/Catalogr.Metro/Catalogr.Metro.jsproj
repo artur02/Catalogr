@@ -69,7 +69,9 @@
     <Content Include="js\config.js" />
     <Content Include="js\data.js" />
     <Content Include="js\default.js" />
-    <Content Include="js\External\ember-1.0.pre.js" />
+    <Content Include="js\External\ember-latest.js" />
+    <Content Include="js\External\handlebars-1.0.0.beta.6.js" />
+    <Content Include="js\External\jquery-1.8.1.js" />
     <Content Include="js\External\jsSha2\docs\changes.txt" />
     <Content Include="js\External\jsSha2\docs\readme.txt" />
     <Content Include="js\External\jsSha2\license.txt" />
@@ -86,6 +88,9 @@
     <Content Include="pages\addNewBook\addNewBook.css" />
     <Content Include="pages\addNewBook\addNewBook.html" />
     <Content Include="pages\addNewBook\addNewBook.js" />
+    <Content Include="pages\groupedItems\authorGroups.html" />
+    <Content Include="pages\groupedItems\authorGroups.js" />
+    <Content Include="pages\groupedItems\templates.js" />
     <Content Include="pages\groupedItems\viewmodel.js" />
     <Content Include="pages\itemDetail\itemDetail.css" />
     <Content Include="pages\itemDetail\itemDetail.html" />
