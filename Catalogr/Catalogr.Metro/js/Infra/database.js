@@ -9,6 +9,12 @@
         authors: "authors"
     };
 
+    var transactionMode = {
+        readonly: "readonly",
+        readwrite: "readwrite",
+        versionchange: "versionchange"
+    };
+
     function open(name, version) {
         return new WinJS.Promise(function (comp, err, prog) {
             var dbRequest = window.indexedDB.open(name, version);
@@ -42,7 +48,7 @@
             var authors = [];
 
             // Create a transaction with which to query the IndexedDB.
-            var txn = db.transaction([objectStores.books, objectStores.authors], "readonly");
+            var txn = db.transaction([objectStores.books, objectStores.authors], transactionMode.readonly);
 
             // Set the event callbacks for the transaction.
             txn.onerror = function () {
@@ -134,7 +140,7 @@
     function addBooks(books) {
         return new WinJS.Promise(function(comp, err) {
 
-            var txn = config.db.transaction([objectStores.books], "readwrite");
+            var txn = config.db.transaction([objectStores.books], transactionMode.readwrite);
             txn.oncomplete = function() {
                 logger.info("Database populated.", "sample", "status");
                 comp();
@@ -168,7 +174,7 @@
     function addAuthors(authors) {
         return new WinJS.Promise(function(comp, err) {
 
-            var txn = config.db.transaction([objectStores.authors], "readwrite");
+            var txn = config.db.transaction([objectStores.authors], transactionMode.readwrite);
             txn.oncomplete = function () {
                 logger.log("Database populated.", "sample", "status");
                 comp();
