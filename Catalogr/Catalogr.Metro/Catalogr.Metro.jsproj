@@ -91,6 +91,7 @@
     <Content Include="pages\addNewBook\addNewBook.js" />
     <Content Include="pages\groupedItems\authorGroups.html" />
     <Content Include="pages\groupedItems\authorGroups.js" />
+    <Content Include="pages\groupedItems\templates\temp.js" />
     <Content Include="pages\groupedItems\viewmodel.js" />
     <Content Include="pages\itemDetail\itemDetail.css" />
     <Content Include="pages\itemDetail\itemDetail.html" />
@@ -106,9 +107,6 @@
   </ItemGroup>
   <ItemGroup>
     <SDKReference Include="Microsoft.WinJS.1.0, Version=1.0" />
-  </ItemGroup>
-  <ItemGroup>
-    <Folder Include="pages\groupedItems\templates\" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\$(WMSJSProjectDirectory)\Microsoft.VisualStudio.$(WMSJSProject).targets" />
   <!-- To modify your build process, add your task inside one of the targets below then uncomment

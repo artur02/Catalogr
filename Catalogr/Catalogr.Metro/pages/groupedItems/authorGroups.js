@@ -19,33 +19,16 @@
                 //VM.generate();
                 
 
-
-                window.App = Ember.Application.create({
-                    
-
-                        
-                        });
-
                 require(['/js/Infra/templateLoader.js'], function(loader) {
-                    loader.load('pages');
+                    loader.load('pages\\groupedItems\\templates').done(function() {
+                        var view = Ember.View.create({
+                            templateName: 'temp',
+                            name: "Bob"
+                        });
+                        view.appendTo('#content');
+                    });
                 });
-
-                Ember.TEMPLATES["my_cool_template"] = Ember.Handlebars.compile('<b>{{name}}</b>');
-                Ember.TEMPLATES["hello"] = Ember.Handlebars.compile('Hello, <b>{{name}}</b>');
-
-    var view = Ember.View.create({
-        templateName: 'hello',
-        name: "Bob"
-    });
-    view.appendTo('#content');
-    
-
-                window.App.name = "aaa";
-
-
-                
-
-
+  
 
                 /*var listView = element.querySelector(".groupeditemslist").winControl;
                 listView.groupHeaderTemplate = element.querySelector(".headertemplate");
