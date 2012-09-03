@@ -21,6 +21,20 @@
         });
     }
 
+    function itemInvoked(item) {
+        require(["data", "/pages/groupedItems/viewmodel.js"], function (data, VM) {
+            if (appView.value === appViewState.snapped) {
+                // If the page is snapped, the user invoked a group.
+                var group = VM.groups.getAt(item.detail.itemIndex);
+                this.navigateToGroup(group.key);
+            } else {
+                // If the page is not snapped, the user invoked an item.
+                var selectedItem = VM.items.getAt(item.detail.itemIndex);
+                nav.navigate("/pages/itemDetail/itemDetail.html", { selectedItem: data.getItemReference(selectedItem) });
+            }
+        });
+    }
+
     function itemTemplateBuilder(item) {
         var view = Ember.View.create({
             templateName: 'item',
@@ -41,15 +55,16 @@
         var result = $(buffer.string());
         return result[0];
     }
+    
+    function navigateToGroup(key) {
+        nav.navigate("/pages/groupDetail/groupDetail.html", { groupKey: key });
+    }
 
     ui.Pages.define("/pages/groupedItems/authorGroups.html", {
         // Navigates to the groupHeaderPage. Called from the groupHeaders,
         // keyboard shortcut and iteminvoked.
-        navigateToGroup: function(key) {
-            nav.navigate("/pages/groupDetail/groupDetail.html", { groupKey: key });
-        },
         ready: function(element, options) {
-
+            var _this = this;
             require(["/pages/groupedItems/viewmodel.js"], function(VM) {
                 VM.generate();
                 
@@ -62,27 +77,21 @@
                         
                         initializeLayout(listView, appView.value);
                         listView.element.focus();
-
+                        
+                        listView.oniteminvoked = itemInvoked.bind(_this);
+                        listView.addEventListener("keydown", function (e) {
+                            if (appView.value !== appViewState.snapped && e.ctrlKey && e.keyCode === WinJS.Utilities.Key.g && e.altKey) {
+                                var data = listView.itemDataSource.list.getAt(listView.currentItem.index);
+                                navigateToGroup(data.group.key);
+                                e.preventDefault();
+                                e.stopImmediatePropagation();
+                            }
+                        }, true);
 
                     }, function(err) {
                         debugger;
                     });
                 });
-  
-
-                /*listView.oniteminvoked = _this._itemInvoked.bind(this);
-
-                // Set up a keyboard shortcut (ctrl + alt + g) to navigate to the
-                // current group when not in snapped mode.
-                listView.addEventListener("keydown", function(e) {
-                    if (appView.value !== appViewState.snapped && e.ctrlKey && e.keyCode === WinJS.Utilities.Key.g && e.altKey) {
-                        var data = listView.itemDataSource.list.getAt(listView.currentItem.index);
-                        this.navigateToGroup(data.group.key);
-                        e.preventDefault();
-                        e.stopImmediatePropagation();
-                    }
-                }.bind(this), true);*/
-
 
                 document.getElementById("cmdAdd").addEventListener("click", doClickAdd, false);
             });
@@ -103,20 +112,6 @@
                     this._initializeLayout(listView, viewState);
                 }
             }
-        },
-
-        _itemInvoked: function(args) {
-            require(["data", "/pages/groupedItems/viewmodel.js"], function(data, VM) {
-                if (appView.value === appViewState.snapped) {
-                    // If the page is snapped, the user invoked a group.
-                    var group = VM.groups.getAt(args.detail.itemIndex);
-                    this.navigateToGroup(group.key);
-                } else {
-                    // If the page is not snapped, the user invoked an item.
-                    var item = VM.items.getAt(args.detail.itemIndex);
-                    nav.navigate("/pages/itemDetail/itemDetail.html", { item: data.getItemReference(item) });
-                }
-            });
         }
     });
 
