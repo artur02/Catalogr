@@ -23,8 +23,8 @@
 
     function itemTemplateBuilder(item) {
         var view = Ember.View.create({
-            templateName: 'header',
-            author: item._value.data.title
+            templateName: 'item',
+            title: item._value.data.title
         });
         var buffer = new Ember.RenderBuffer();
         view.renderToBuffer(buffer);
