@@ -77,7 +77,7 @@
             books.forEach(function(book) {
                 var item = { group: sampleGroups[book.authorid], title: book.title, subtitle: "Item Subtitle: 1", description: itemDescription, content: itemContent, backgroundImage: lightGray };
 
-                amazon.loadKeys().then(function() {
+                /*amazon.loadKeys().then(function() {
 
                     amazon.bookSearch.getDetails({
                         Author: authors[book.authorid],
@@ -95,7 +95,7 @@
                     });
 
 
-                });
+                });*/
                 sampleItems.push(item);
             });
 
@@ -114,7 +114,7 @@
         generate: function () {
             // TODO: Replace the data with your real data.
             // You can add data from asynchronous sources whenever it becomes available.
-            var res = generateSampleData().then(function(res) {
+            return  generateSampleData().then(function(res) {
                 res.forEach(function(item) {
                     list.push(item);
                 });

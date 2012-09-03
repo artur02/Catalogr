@@ -13,9 +13,13 @@
         return new WinJS.Promise(function(comp, err) {
 
             return Windows.Storage.FileIO.readTextAsync(file).then(function(fileContent) {
-                var template = Ember.Handlebars.compile(fileContent);
-                Ember.TEMPLATES[file.displayName] = template;
-                comp(template);
+                try {
+                    var template = Ember.Handlebars.compile(fileContent);
+                    Ember.TEMPLATES[file.displayName] = template;
+                    comp(template);
+                } catch(e) {
+                    err(e);
+                } 
             });
         });
     }
@@ -46,7 +50,10 @@
 
                     WinJS.Promise.join(promises).done(function() {
                         comp(templates);
-                    });
+                    },
+                        function(e) {
+                            err(e);
+                        });
                 });
             });
         });

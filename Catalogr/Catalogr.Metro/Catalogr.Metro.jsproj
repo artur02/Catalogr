@@ -91,7 +91,8 @@
     <Content Include="pages\addNewBook\addNewBook.js" />
     <Content Include="pages\groupedItems\authorGroups.html" />
     <Content Include="pages\groupedItems\authorGroups.js" />
-    <Content Include="pages\groupedItems\templates\temp.js" />
+    <Content Include="pages\groupedItems\templates\header.html" />
+    <Content Include="pages\groupedItems\templates\temp.html" />
     <Content Include="pages\groupedItems\viewmodel.js" />
     <Content Include="pages\itemDetail\itemDetail.css" />
     <Content Include="pages\itemDetail\itemDetail.html" />

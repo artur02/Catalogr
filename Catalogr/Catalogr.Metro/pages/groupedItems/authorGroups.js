@@ -6,6 +6,42 @@
     var nav = WinJS.Navigation;
     var ui = WinJS.UI;
 
+    function initializeLayout(listView, viewState) {
+        require(["data", "/pages/groupedItems/viewmodel.js"], function (data, VM) {
+
+            if (viewState === appViewState.snapped) {
+                listView.itemDataSource = VM.groups.dataSource;
+                listView.groupDataSource = null;
+                listView.layout = new ui.ListLayout();
+            } else {
+                listView.itemDataSource = VM.items.dataSource;
+                listView.groupDataSource = VM.groups.dataSource;
+                listView.layout = new ui.GridLayout({ groupHeaderPosition: "top" });
+            }
+        });
+    }
+
+    function itemTemplateBuilder(item) {
+        var view = Ember.View.create({
+            templateName: 'header',
+            author: item._value.data.title
+        });
+        var buffer = new Ember.RenderBuffer();
+        view.renderToBuffer(buffer);
+        var result = $(buffer.string());
+        return result[0];
+    }
+    function headerTemplateBuilder(header) {
+        var view = Ember.View.create({
+            templateName: 'header',
+            author: header._value.data.title
+        });
+        var buffer = new Ember.RenderBuffer();
+        view.renderToBuffer(buffer);
+        var result = $(buffer.string());
+        return result[0];
+    }
+
     ui.Pages.define("/pages/groupedItems/authorGroups.html", {
         // Navigates to the groupHeaderPage. Called from the groupHeaders,
         // keyboard shortcut and iteminvoked.
@@ -13,27 +49,28 @@
             nav.navigate("/pages/groupDetail/groupDetail.html", { groupKey: key });
         },
         ready: function(element, options) {
-            var _this = this;
 
             require(["/pages/groupedItems/viewmodel.js"], function(VM) {
-                //VM.generate();
+                VM.generate();
                 
 
                 require(['/js/Infra/templateLoader.js'], function(loader) {
                     loader.load('pages\\groupedItems\\templates').done(function() {
-                        var view = Ember.View.create({
-                            templateName: 'temp',
-                            name: "Bob"
-                        });
-                        view.appendTo('#content');
+                        var listView = document.getElementById('list').winControl;
+                        listView.groupHeaderTemplate = headerTemplateBuilder;
+                        listView.itemTemplate = itemTemplateBuilder;
+                        
+                        initializeLayout(listView, appView.value);
+                        listView.element.focus();
+
+
+                    }, function(err) {
+                        debugger;
                     });
                 });
   
 
-                /*var listView = element.querySelector(".groupeditemslist").winControl;
-                listView.groupHeaderTemplate = element.querySelector(".headertemplate");
-                listView.itemTemplate = element.querySelector(".itemtemplate");
-                listView.oniteminvoked = _this._itemInvoked.bind(this);
+                /*listView.oniteminvoked = _this._itemInvoked.bind(this);
 
                 // Set up a keyboard shortcut (ctrl + alt + g) to navigate to the
                 // current group when not in snapped mode.
@@ -44,12 +81,10 @@
                         e.preventDefault();
                         e.stopImmediatePropagation();
                     }
-                }.bind(this), true);
+                }.bind(this), true);*/
 
-                _this._initializeLayout(listView, appView.value);
-                listView.element.focus();
 
-                document.getElementById("cmdAdd").addEventListener("click", doClickAdd, false);*/
+                document.getElementById("cmdAdd").addEventListener("click", doClickAdd, false);
             });
         },
 
@@ -68,23 +103,6 @@
                     this._initializeLayout(listView, viewState);
                 }
             }
-        },
-
-        // This function updates the ListView with new layouts
-        _initializeLayout: function(listView, viewState) {
-            /// <param name="listView" value="WinJS.UI.ListView.prototype" />
-            require(["data", "/pages/groupedItems/viewmodel.js"], function(data, VM) {
-
-                if (viewState === appViewState.snapped) {
-                    listView.itemDataSource = VM.groups.dataSource;
-                    listView.groupDataSource = null;
-                    listView.layout = new ui.ListLayout();
-                } else {
-                    listView.itemDataSource = VM.items.dataSource;
-                    listView.groupDataSource = VM.groups.dataSource;
-                    listView.layout = new ui.GridLayout({ groupHeaderPosition: "top" });
-                }
-            });
         },
 
         _itemInvoked: function(args) {
