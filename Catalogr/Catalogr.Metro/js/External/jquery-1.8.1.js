@@ -5098,10 +5098,10 @@
 
                         // This should fail with an exception
                         // Gecko does not error, returns false instead
-                        try {
+                        /*try {
                             matches.call(div, "[test!='']:sizzle");
                             rbuggyMatches.push(Expr.match.PSEUDO);
-                        } catch (e) { }
+                        } catch (e) { }*/
                     });
 
                     // rbuggyMatches always contains :active, so no need for a length check
