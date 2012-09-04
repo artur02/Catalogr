@@ -36,24 +36,34 @@
     }
 
     function itemTemplateBuilder(item) {
-        var view = Ember.View.create({
-            templateName: 'item',
-            title: item._value.data.title
+        return new WinJS.Promise(function(comp, err) {
+            require(['/js/Infra/emberExtensions.js'], function(ember) {
+                var view = Ember.View.create({
+                    templateName: 'item',
+                    title: item._value.data.title,
+                    navigate: function() {
+                        debugger;
+                    }
+                });
+                var ret = ember.viewToDom(view);
+                comp(ret);
+            });
         });
-        var buffer = new Ember.RenderBuffer();
-        view.renderToBuffer(buffer);
-        var result = $(buffer.string());
-        return result[0];
     }
     function headerTemplateBuilder(header) {
-        var view = Ember.View.create({
-            templateName: 'header',
-            author: header._value.data.title
+        return new WinJS.Promise(function(comp, err) {
+            require(['/js/Infra/emberExtensions.js'], function(ember) {
+                var view = Ember.View.create({
+                    templateName: 'header',
+                    author: header._value.data.title,
+                    navigate: function(event) {
+                        console.log(event.view.author);
+                    }
+                });
+                var ret = ember.viewToDom(view);
+                comp(ret);
+            });
         });
-        var buffer = new Ember.RenderBuffer();
-        view.renderToBuffer(buffer);
-        var result = $(buffer.string());
-        return result[0];
     }
     
     function navigateToGroup(key) {
@@ -63,12 +73,13 @@
     ui.Pages.define("/pages/groupedItems/authorGroups.html", {
         // Navigates to the groupHeaderPage. Called from the groupHeaders,
         // keyboard shortcut and iteminvoked.
-        ready: function(element, options) {
+        ready: function (element, options) {
+            Ember.Application.create();
+
             var _this = this;
             require(["/pages/groupedItems/viewmodel.js"], function(VM) {
                 VM.generate();
                 
-
                 require(['/js/Infra/templateLoader.js'], function(loader) {
                     loader.load('pages\\groupedItems\\templates').done(function() {
                         var listView = document.getElementById('list').winControl;

@@ -10372,9 +10372,11 @@ Ember.Application = Ember.Namespace.extend(
     this.deferReadiness();
 
     var self = this;
-    this.$().ready(function() {
-      self.advanceReadiness();
+      
+    WinJS.Application.addEventListener("ready", function () {
+        self.advanceReadiness();
     });
+
   },
 
   deferReadiness: function() {
@@ -10385,9 +10387,9 @@ Ember.Application = Ember.Namespace.extend(
   advanceReadiness: function() {
     this._readinessDeferrals--;
 
-    if (this._readinessDeferrals === 0) {
+    //if (this._readinessDeferrals === 0) {
       Ember.run.once(this, this.didBecomeReady);
-    }
+    //}
   },
 
   /**

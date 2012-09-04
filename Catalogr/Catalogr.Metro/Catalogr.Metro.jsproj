@@ -81,6 +81,7 @@
     <Content Include="js\External\require.js" />
     <Content Include="js\Infra\amazon.js" />
     <Content Include="js\Infra\database.js" />
+    <Content Include="js\Infra\emberExtensions.js" />
     <Content Include="js\Infra\logger.js" />
     <Content Include="js\Infra\templateLoader.js" />
     <Content Include="js\navigator.js" />
