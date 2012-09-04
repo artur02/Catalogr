@@ -41,6 +41,8 @@
                 var view = Ember.View.create({
                     templateName: 'item',
                     title: item._value.data.title,
+                    author: item._value.data.group.title,
+                    cover: item._value.data.backgroundImage,
                     navigate: function() {
                         debugger;
                     }
