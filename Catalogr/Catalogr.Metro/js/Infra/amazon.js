@@ -43,9 +43,13 @@
             var unsignedUrl = url;
             var lines = unsignedUrl.split("\n");
             unsignedUrl = "";
-            for (var i in lines) {
-                unsignedUrl += lines[i];
-            }
+            lines.forEach(function(line) {
+                unsignedUrl += line;
+            });
+
+            //for (var i in lines) {
+            //    unsignedUrl += lines[i];
+            //}
 
             // find host and query portions
             var urlregex = new RegExp("^http:\\/\\/(.*)\\/onca\\/xml\\?(.*)$");

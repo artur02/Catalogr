@@ -12,6 +12,11 @@
     <link href="/css/default.css" rel="stylesheet" />
     <link href="/pages/itemDetail/itemDetail.css" rel="stylesheet" />
     <script src="/js/data.js"></script>
+    
+    <script src="/js/External/jquery-1.8.1.js"> </script>
+        <script src="/js/External/handlebars-1.0.0.beta.6.js"> </script>
+        <script src="/js/External/ember-latest.js"> </script>
+
     <script src="/pages/itemDetail/itemDetail.js"></script>
 </head>
 <body>
@@ -20,20 +25,11 @@
         <header aria-label="Header content" role="banner">
             <button class="win-backbutton" aria-label="Back" disabled type="button"></button>
             <h1 class="titlearea win-type-ellipsis">
-                <span class="pagetitle"></span>
+                <span id="pagetitle" class="pagetitle"></span>
             </h1>
         </header>
-        <div class="content" aria-label="Main content" role="main">
-            <article>
-                <div>
-                    <header>
-                        <h2 class="item-title"></h2>
-                        <h4 class="item-subtitle"></h4>
-                    </header>
-                    <img class="item-image" src="#" />
-                    <div class="item-content"></div>
-                </div>
-            </article>
+        <div id="content" class="content" aria-label="Main content" role="main">
+            
         </div>
     </div>
 </body>

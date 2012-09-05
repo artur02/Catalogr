@@ -106,6 +106,7 @@
     <Content Include="pages\groupedItems\groupedItems.html" />
     <Content Include="pages\groupedItems\groupedItems.js" />
     <Content Include="default.html" />
+    <Content Include="pages\itemDetail\templates\detail.html" />
     <None Include="Catalogr.Metro_TemporaryKey.pfx" />
   </ItemGroup>
   <ItemGroup>
