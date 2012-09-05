@@ -90,6 +90,8 @@
     <Content Include="pages\addNewBook\addNewBook.css" />
     <Content Include="pages\addNewBook\addNewBook.html" />
     <Content Include="pages\addNewBook\addNewBook.js" />
+    <Content Include="pages\groupDetail\templates\header.html" />
+    <Content Include="pages\groupDetail\templates\item.html" />
     <Content Include="pages\groupedItems\authorGroups.html" />
     <Content Include="pages\groupedItems\authorGroups.js" />
     <Content Include="pages\groupedItems\templates\header.html" />
