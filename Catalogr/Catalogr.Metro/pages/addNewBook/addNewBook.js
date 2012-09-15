@@ -6,14 +6,29 @@
             // populates the page elements with the app's data.
             ready: function (element, options) {
                 // TODO: Initialize the page here.
-                var authorSelector = document.getElementById('authorSelector');
-                var templateElement = document.getElementById("templateDiv");
-                authorSelector.innerHTML = "";
+                
+                require(['/js/Infra/templateLoader.js'], function (loader) {
+                    loader.load('pages\\addNewBook\\templates').done(function () {
+                        var view = Ember.View.create({
+                            templateName: 'authors',
+                            options: []
+                        });
 
-                var templateControl = templateElement.winControl;
-                data.groups.forEach(function (group) {
-                    templateControl.render(group, authorSelector);
+                        data.authors().forEach(function(author) {
+                            view.options.push({
+                                text: author
+                            });
+                        });
+                        
+                        view.appendTo('#selectauthor');
+
+
+                    }, function (err) {
+                        debugger;
+                    });
                 });
+
+                
             },
 
             unload: function () {

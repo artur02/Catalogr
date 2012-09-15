@@ -42,8 +42,12 @@
         },
         
 
-        authors: authors,
-        books: books
+        authors: function() {
+            return authors;
+        },
+        books: function() {
+            return books;
+        }
     };
 
 });
