@@ -29,14 +29,14 @@
                     <header>
                         <h2>Authors</h2>
                     </header>
-                    <div id='selectauthor' class="item-content selectauthor">
-                        
-                    </div>
+                    <img id="cover"/>
+                    <div id='selectauthor' class="item-content selectauthor"></div>
                     or
                     <div class="item-content newauthor" id="newauthor">
                         <label title="The name of the author" for="authorId">Name</label><input id="authorId" type="text"/>
                         <button>+</button>
                     </div>
+                    
                 </article>
                 <article>
                     <header>
@@ -46,7 +46,7 @@
                         <label title="The title of the book" for="title">Title</label><input id="title" type="text"/>
                     </div>
                 </article>
-            
+                <button id="detailsButton" type="button">Get details</button>
             </section>
         
             <div id="createAppBar" data-win-control="WinJS.UI.AppBar" data-win-options="">
