@@ -25,11 +25,14 @@
                 </h1>
             </header>
             <section class="content" aria-label="Main content" role="main">
-                <article>
+                
+                    <img id="cover" class="item-image"/>
+                
+                <section>
                     <header>
                         <h2>Authors</h2>
                     </header>
-                    <img id="cover"/>
+                    
                     <div id='selectauthor' class="item-content selectauthor"></div>
                     or
                     <div class="item-content newauthor" id="newauthor">
@@ -37,15 +40,15 @@
                         <button>+</button>
                     </div>
                     
-                </article>
-                <article>
+                </section>
+                <section>
                     <header>
                         <h2>Book</h2>
                     </header>
                     <div class="item-content bookdetails" id="Div1">
                         <label title="The title of the book" for="title">Title</label><input id="title" type="text"/>
                     </div>
-                </article>
+                </section>
                 <button id="detailsButton" type="button">Get details</button>
             </section>
         

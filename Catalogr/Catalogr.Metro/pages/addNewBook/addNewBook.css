@@ -2,12 +2,16 @@
     margin-left: 120px;
 }
 
-    .addNewBook .content article {
-        /* Define a multi-column, horizontally scrolling article by default. */
-        /*column-fill: auto;*/
-        /*column-gap: 80px;*/
-        /*column-width: 480px;*/
-        /*height: calc(100% - 183px);*/
+    .addNewBook .content img {
+        float: left;
+        clear: right;
         margin-left: 120px;
-        /*width: 480px;*/
+        min-width: 200px;
+        min-height: 500px;
     }
+
+    .addNewBook .content section {
+        margin-left: 120px;
+    }
+
+        
