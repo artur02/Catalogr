@@ -32,11 +32,12 @@
         saveButton.addEventListener('click', function () {
             var authorNode = document.getElementById("authorSelector");
             var author = authorNode.options[authorNode.selectedIndex];
+            var title = document.getElementById("title");
 
 
             require(['/js/Infra/database.js'], function (database) {
                 database.addBooks([{
-                    title: 'ALMA',
+                    title: title.value,
                     authorid: author.value
                 }]);
             });
