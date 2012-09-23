@@ -16,6 +16,7 @@
                 // your application here.
                 
                 console.log("Loading...");
+                var emberApp = Ember.Application.create();
 
                 require.config({
                     baseUrl: 'js'

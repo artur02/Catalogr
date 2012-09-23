@@ -77,8 +77,7 @@
         // Navigates to the groupHeaderPage. Called from the groupHeaders,
         // keyboard shortcut and iteminvoked.
         ready: function (element, options) {
-            var app = Ember.Application.create();
-            app.initialize();
+            
 
             var _this = this;
             require(["/pages/groupedItems/viewmodel.js"], function(VM) {

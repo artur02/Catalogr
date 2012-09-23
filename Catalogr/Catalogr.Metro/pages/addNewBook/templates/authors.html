@@ -1,5 +1,5 @@
 ﻿<select id="authorSelector">
     {{#each options}}
-    <option>{{text}}</option>
+    <option {{bindAttr value="index"}}>{{text}}</option>
     {{/each}}
 </select>

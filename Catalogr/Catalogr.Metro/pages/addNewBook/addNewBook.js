@@ -15,9 +15,10 @@
                             options: []
                         });
 
-                        data.authors().forEach(function(author) {
+                        data.authors().forEach(function(author, index) {
                             view.options.push({
-                                text: author
+                                text: author,
+                                value: index
                             });
                         });
                         
@@ -26,13 +27,12 @@
 
 
 
-                        var button = document.getElementById('detailsButton');
-                        button.addEventListener('click', function () {
+                        var metaButton = document.getElementById('cmdGetMeta');
+                        metaButton.addEventListener('click', function () {
                             amazon.loadKeys().then(function () {
                                 var authorNode = document.getElementById("authorSelector");
                                 var titleNode = document.getElementById("title");
                                 var author = authorNode.options[authorNode.selectedIndex].text;
-                                
 
                                 amazon.bookSearch.getDetails({
                                     Author: author,
@@ -42,17 +42,28 @@
                                     var urlNodes = res.largeImage.getElementsByTagName("URL");
                                     var widthNodes = res.largeImage.getElementsByTagName("Width");
                                     var heightNodes = res.largeImage.getElementsByTagName("Height");
-                                    item.backgroundImage = urlNodes[0].innerText;
                                     var actualHeight = heightNodes[0].innerText;
-                                    item.backgroundImageHeight = 250;
-                                    item.backgroundImageWidth = 250 / actualHeight * widthNodes[0].innerText;
-
+                                    
                                     var cover = document.getElementById("cover");
                                     cover.src = urlNodes[0].innerText;
 
                                 });
 
 
+                            });
+                        });
+                        
+                        var saveButton = document.getElementById('cmdSave');
+                        saveButton.addEventListener('click', function () {
+                            var authorNode = document.getElementById("authorSelector");
+                            var author = authorNode.options[authorNode.selectedIndex];
+                            
+                            
+                            require(['/js/Infra/database.js'], function(database) {
+                                database.addBooks([{
+                                    title: 'ALMA',
+                                    authorid: author.value 
+                                }]);
                             });
                         });
 
