@@ -1,4 +1,5 @@
-﻿(function() {
+﻿/*globals Ember, WinJS */
+(function() {
     "use strict";
 
         WinJS.UI.Pages.define("/pages/addNewBook/addNewBook.html", {
@@ -24,9 +25,6 @@
                         
                         view.appendTo('#selectauthor');
                         
-
-
-
                         var metaButton = document.getElementById('cmdGetMeta');
                         metaButton.addEventListener('click', function () {
                             amazon.loadKeys().then(function () {

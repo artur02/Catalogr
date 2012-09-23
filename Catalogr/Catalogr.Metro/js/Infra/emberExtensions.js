@@ -1,4 +1,5 @@
-﻿define([], function () {
+﻿/*globals $, define, Ember*/
+define([], function () {
 
     function viewToDom(view) {
         var buffer = new Ember.RenderBuffer();

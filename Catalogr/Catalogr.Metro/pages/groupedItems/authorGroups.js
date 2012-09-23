@@ -1,4 +1,6 @@
-﻿(function() {
+﻿/*global Ember*/
+
+(function () {
     "use strict";
 
     var appView = Windows.UI.ViewManagement.ApplicationView;

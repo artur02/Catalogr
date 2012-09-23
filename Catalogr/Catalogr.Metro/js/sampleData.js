@@ -15,7 +15,7 @@
                 folder.getFileAsync(filename).done(function (file) {
 
                     // Prepare load settings.
-                    var loadSettings = new Windows.Data.Xml.Dom.XmlLoadSettings;
+                    var loadSettings = new Windows.Data.Xml.Dom.XmlLoadSettings();
                     loadSettings.prohibitDtd = false;
                     loadSettings.resolveExternals = false;
 

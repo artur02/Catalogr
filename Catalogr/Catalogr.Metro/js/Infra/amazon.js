@@ -1,4 +1,5 @@
-﻿define(["External/jsSha2/sha2"], function() {
+﻿/*globals define, require, WinJS*/
+define(["External/jsSha2/sha2"], function() {
         "use strict";
 
         var accessKeyId,

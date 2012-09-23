@@ -48,6 +48,7 @@
     <TargetPlatformVersion>8.0</TargetPlatformVersion>
     <DefaultLanguage>en-US</DefaultLanguage>
     <PackageCertificateKeyFile>Catalogr.Metro_TemporaryKey.pfx</PackageCertificateKeyFile>
+    <JSLintSkip>|\js\External\ember-latest.js|\js\External\handlebars-1.0.0.beta.6.js|\js\External\jquery-1.8.1.js|\js\External\require.js|\js\External\jsSha2\sha2.js|\js\External\jsSha2\sha256.js|\BDD\lib\chai.js|\BDD\lib\mocha.js</JSLintSkip>
   </PropertyGroup>
   <ItemGroup>
     <AppxManifest Include="package.appxmanifest">

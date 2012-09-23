@@ -1,4 +1,6 @@
-﻿define(["data","Infra/amazon"], function(data, amazon) {
+﻿/*global WinJS, define, require, Ember */
+
+define(["data"], function (data) {
     "use strict";
 
     var authors;
@@ -7,23 +9,19 @@
     var list = new WinJS.Binding.List();
     var groupedItems = list.createGrouped(
         function(item) {
-             return item.group.key;
+            return item.group.key;
         },
         function(item) {
-             return item.group;
+            return item.group;
         }
     );
 
-    // Get a reference for an item, using the group key and item title as a
-    // unique reference to the item that can be easily serialized.
     function getItemReference(item) {
         return [item.group.key, item.title];
     }
 
-    // This function returns a WinJS.Binding.List containing only the items
-    // that belong to the provided group.
     function getItemsFromGroup(group) {
-        return list.createFiltered(function (item) { return item.group.key === group.key; });
+        return list.createFiltered(function(item) { return item.group.key === group.key; });
     }
 
     //// Get the unique group corresponding to the provided group key.
@@ -50,6 +48,7 @@
 
     // Returns an array of sample data that can be added to the application's
     // data list. 
+
     function generateSampleData() {
         return data.generate().then(function(res) {
 
@@ -77,28 +76,14 @@
 
             var sampleItems = [];
             books.forEach(function(book) {
-                var item = { group: sampleGroups[book.authorid], title: book.title, subtitle: "Item Subtitle: 1", description: itemDescription, content: itemContent, backgroundImage: lightGray };
-
-                /*amazon.loadKeys().then(function() {
-
-                    amazon.bookSearch.getDetails({
-                        Author: authors[book.authorid],
-                        Title: book.title,
-                        ResponseGroup: 'ItemAttributes,Images'
-                    }).then(function(res) {
-                        var urlNodes = res.largeImage.getElementsByTagName("URL");
-                        var widthNodes = res.largeImage.getElementsByTagName("Width");
-                        var heightNodes = res.largeImage.getElementsByTagName("Height");
-                        item.backgroundImage = urlNodes[0].innerText;
-                        var actualHeight = heightNodes[0].innerText;
-                        item.backgroundImageHeight = 250;
-                        item.backgroundImageWidth = 250 / actualHeight * widthNodes[0].innerText;
-
-                    });
-
-
-                });*/
-
+                var item = {
+                    group: sampleGroups[book.authorid],
+                    title: book.title,
+                    subtitle: "Item Subtitle: 1",
+                    description: itemDescription,
+                    content: itemContent,
+                    backgroundImage: lightGray
+                };
                 sampleItems.push(item);
             });
 
@@ -111,12 +96,10 @@
         groups: groupedItems.groups,
         getItemReference: getItemReference,
         getItemsFromGroup: getItemsFromGroup,
-        //resolveGroupReference: resolveGroupReference,
-        //resolveItemReference: resolveItemReference,
-        generate: function () {
+        generate: function() {
             // TODO: Replace the data with your real data.
             // You can add data from asynchronous sources whenever it becomes available.
-            return  generateSampleData().then(function(res) {
+            return generateSampleData().then(function(res) {
                 if (list.length === 0) {
                     res.forEach(function(item) {
                         list.push(item);
@@ -125,4 +108,4 @@
             });
         }
     });
-})
+});

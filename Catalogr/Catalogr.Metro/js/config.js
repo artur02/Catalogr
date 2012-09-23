@@ -1,5 +1,10 @@
 ﻿define(function () {
+    "use strict";
+
     return {
-        dbName: 'Catalogr.Books'
+        db: {
+            name: 'Catalogr.Books',
+            version: 1
+        }
     };
 });

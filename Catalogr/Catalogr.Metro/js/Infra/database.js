@@ -1,4 +1,4 @@
-﻿/*global WinJS:true, define:true, require:true */
+﻿/*global WinJS, define, require */
 
 define(["config", "Infra/logger"], function (config, logger) {
     "use strict";
@@ -16,8 +16,50 @@ define(["config", "Infra/logger"], function (config, logger) {
         readwrite: "readwrite",
         versionchange: "versionchange"
     };
+    
+    // Whenever an IndexedDB is created, the version is set to "", 
+    // but can be immediately upgraded by calling createDB. 
+    function dbVersionUpgrade(evt) {
+        return new WinJS.Promise(function (comp, err) {
+
+            // If the database was previously loaded, close it. 
+            // Closing the database keeps it from becoming blocked for later delete operations.
+            if (db) {
+                db.close();
+            }
+            db = evt.target.result;
+
+            // Get the version update transaction handle, 
+            //since we want to create the schema as part of the same transaction.
+            var txn = evt.target.transaction;
+
+            // Create the books object store, with an index on the book title.
+            // Note that we set the returned object store to a variable
+            // in order to make further calls (index creation) on that object store.
+            var bookStore = db.createObjectStore(objectStores.books, { keyPath: "id", autoIncrement: true });
+            bookStore.createIndex("title", "title", { unique: false });
+
+            // Create the authors object store.
+            db.createObjectStore(objectStores.authors, { keyPath: "id" });
+
+            // Once the creation of the object stores is finished (they are created asynchronously), log success.
+            txn.oncomplete = function () { logger.info("Database schema created.", "sample", "status"); };
+            newCreate = true;
+
+            comp();
+        });
+
+    }
 
     function open(name, version) {
+        if(!name) {
+            name = config.db.name;
+        }
+        
+        if(!version) {
+            version = config.db.version;
+        }
+
         return new WinJS.Promise(function (comp, err) {
             try {
                 // TODO store database in cache by name and version
@@ -26,8 +68,8 @@ define(["config", "Infra/logger"], function (config, logger) {
                     return;
                 }
 
-            //deleteDb(name);
-            var dbRequest = window.indexedDB.open(name, version);
+                //deleteDb(name);
+                var dbRequest = window.indexedDB.open(name, version);
 
                 // Add asynchronous callback functions
                 dbRequest.onerror = function() {
@@ -55,7 +97,7 @@ define(["config", "Infra/logger"], function (config, logger) {
             }
         });
     }
-  
+ 
     function deleteDb(dbName) {
         window.indexedDB.deleteDatabase(dbName);
     }
@@ -91,9 +133,6 @@ define(["config", "Infra/logger"], function (config, logger) {
                     err();
                 };
 
-                // The oncomplete event handler is called asynchronously once reading is finished and the data arrays are fully populated. This
-                // completion event will occur later than the cursor iterations defined below, because the transaction will not complete until
-                // the cursors are finished.
                 txn.oncomplete = function () {
 
                     comp({
@@ -102,12 +141,8 @@ define(["config", "Infra/logger"], function (config, logger) {
                     });
                 };
 
-                // Create a cursor on the books object store. Because we want the results to be returned in title order, we use the title index
-                // on the object store for the cursor to operate on. We could pass a keyRange parameter to the openCursor call to filter the cursor
-                // to specific titles.
                 var bookCursorRequest = txn.objectStore(objectStores.books).index("title").openCursor();
 
-                // As each record is returned (asynchronously), the cursor calls the onsuccess event; we store that data in our books array
                 bookCursorRequest.onsuccess = function(e) {
                     var cursor = e.target.result;
                     if (cursor) {
@@ -116,14 +151,8 @@ define(["config", "Infra/logger"], function (config, logger) {
                     }
                 };
 
-                // The authors object store cursor is handled slightly differently. Here we load the entire authors table into an array because we know there
-                // is only a small amount of data. With larger or filtered datasets, we could have parsed the authorid in the book cursor onsuccess handler 
-                // above and initiated a nested cursor request that created a keyRange for the one authorid desired and passed that keyRange to the openCursor
-                // call below. For clarity of this sample, we follow the simpler model.
                 var authorCursorRequest = txn.objectStore(objectStores.authors).openCursor();
 
-                // Asynchronously retrieve and store the data in the authors array with a key of the author id. This makes it easy to retrieve a specific 
-                // author by id in the oncomplete handler of the transaction.
                 authorCursorRequest.onsuccess = function(e) {
                     var cursor = e.target.result;
                     if (cursor) {
@@ -136,68 +165,38 @@ define(["config", "Infra/logger"], function (config, logger) {
 
         });
     }
-
-    // Whenever an IndexedDB is created, the version is set to "", but can be immediately upgraded by calling createDB. 
-    function dbVersionUpgrade(evt) {
-        return new WinJS.Promise(function(comp, err) {
-
-            // If the database was previously loaded, close it. 
-            // Closing the database keeps it from becoming blocked for later delete operations.
-            if (db) {
-                db.close();
-            }
-            db = evt.target.result;
-
-            // Get the version update transaction handle, since we want to create the schema as part of the same transaction.
-            var txn = evt.target.transaction;
-
-            // Create the books object store, with an index on the book title. Note that we set the returned object store to a variable
-            // in order to make further calls (index creation) on that object store.
-            var bookStore = db.createObjectStore(objectStores.books, { keyPath: "id", autoIncrement: true });
-            bookStore.createIndex("title", "title", { unique: false });
-
-            // Create the authors object store.
-            db.createObjectStore(objectStores.authors, { keyPath: "id" });
-
-            // Once the creation of the object stores is finished (they are created asynchronously), log success.
-            txn.oncomplete = function() { logger.info("Database schema created.", "sample", "status"); };
-            newCreate = true;
-
-            comp();
-        });
-
-    }
    
     function addBooks(books) {
         return new WinJS.Promise(function(comp, err) {
+            open().then(function() {
+                var txn = db.transaction([objectStores.books], transactionMode.readwrite);
+                txn.oncomplete = function () {
+                    logger.info("Database populated.", "sample", "status");
+                    comp();
+                };
+                txn.onerror = function () {
+                    logger.error("Unable to populate database or database already populated.", "sample", "error");
+                    err("Unable to populate database or database already populated");
+                };
+                txn.onabort = function () {
+                    logger.error("Unable to populate database or database already populated.", "sample", "error");
+                    err("Unable to populate database or database already populated");
+                };
 
-            var txn = db.transaction([objectStores.books], transactionMode.readwrite);
-            txn.oncomplete = function() {
-                logger.info("Database populated.", "sample", "status");
-                comp();
-            };
-            txn.onerror = function() {
-                logger.error("Unable to populate database or database already populated.", "sample", "error");
-                err("Unable to populate database or database already populated");
-            };
-            txn.onabort = function() {
-                logger.error("Unable to populate database or database already populated.", "sample", "error");
-                err("Unable to populate database or database already populated");
-            };
+                var booksStore = txn.objectStore(objectStores.books);
 
-            var booksStore = txn.objectStore(objectStores.books);
-
-            // Write books to IndexedDB table.
-            books.forEach(function(book) {
-                try {
-                    var addResult = booksStore.add(book);
-                    addResult.book = book.title;
-                    addResult.onerror = function() {
-                        logger.error("Failed to add book: " + this.book + ".", "sample", "error");
-                    };
-                } catch (error) {
-                    console.log();
-                }
+                // Write books to IndexedDB table.
+                books.forEach(function (book) {
+                    try {
+                        var addResult = booksStore.add(book);
+                        addResult.book = book.title;
+                        addResult.onerror = function () {
+                            logger.error("Failed to add book: " + this.book + ".", "sample", "error");
+                        };
+                    } catch (error) {
+                        console.log();
+                    }
+                });
             });
         });
     }

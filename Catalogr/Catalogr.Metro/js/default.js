@@ -1,4 +1,5 @@
-﻿// For an introduction to the Grid template, see the following documentation:
+﻿/*globals Application, Ember */
+// For an introduction to the Grid template, see the following documentation:
 // http://go.microsoft.com/fwlink/?LinkID=232446
 (function () {
     "use strict";
@@ -23,8 +24,8 @@
                 });
 
                 require(["config", "Infra/logger", "Infra/database", "sampleData", "data"], function (config, logger, database, sampleData, data) {
-                    var db = database.create(config.dbName, 1).then(function complete() {
-                        sampleData.load(config.dbName, 1);
+                    var db = database.create(config.db.name, config.db.version).then(function complete() {
+                        sampleData.load(config.db.name, config.db.version);
 
                         //data.generate();
                     });
