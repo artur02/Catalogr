@@ -1,4 +1,6 @@
-﻿define(["config", "Infra/logger"], function(config, logger) {
+﻿/*global WinJS:true, define:true, require:true */
+
+define(["config", "Infra/logger"], function (config, logger) {
     "use strict";
 
     var newCreate = false;
@@ -16,13 +18,13 @@
     };
 
     function open(name, version) {
-        return new WinJS.Promise(function (comp, err, prog) {
+        return new WinJS.Promise(function (comp, err) {
             try {
-            // TODO store database in cache by name and version
-            if (db) {
-                comp(db);
-                return;
-            }
+                // TODO store database in cache by name and version
+                if (db) {
+                    comp(db);
+                    return;
+                }
 
             //deleteDb(name);
             var dbRequest = window.indexedDB.open(name, version);
@@ -53,9 +55,8 @@
             }
         });
     }
-    
-    function deleteDb(dbName)
-    {
+  
+    function deleteDb(dbName) {
         window.indexedDB.deleteDatabase(dbName);
     }
 
@@ -63,13 +64,13 @@
         var txn = db.transaction([objectStores.books, objectStores.authors], transactionMode.readwrite);
         var books = txn.objectStore(objectStores.books);
         books.clear();
-        
+      
         var authors = txn.objectStore(objectStores.authors);
         authors.clear();
     }
-    
+   
     function read() {
-        return new WinJS.Promise(function (comp, err, prog) {
+        return new WinJS.Promise(function (comp, err) {
             open().then(function() {
 
 
@@ -93,7 +94,7 @@
                 // The oncomplete event handler is called asynchronously once reading is finished and the data arrays are fully populated. This
                 // completion event will occur later than the cursor iterations defined below, because the transaction will not complete until
                 // the cursors are finished.
-                txn.oncomplete = function() {
+                txn.oncomplete = function () {
 
                     comp({
                         books: books,
@@ -166,7 +167,7 @@
         });
 
     }
-    
+   
     function addBooks(books) {
         return new WinJS.Promise(function(comp, err) {
 
