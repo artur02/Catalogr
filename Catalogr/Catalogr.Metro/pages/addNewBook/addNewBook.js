@@ -2,6 +2,47 @@
 (function() {
     "use strict";
 
+    function addMetaCommandHandler() {
+        require(["/js/Infra/amazon.js"], function(amazon) {
+            var metaButton = document.getElementById('cmdGetMeta');
+            metaButton.addEventListener('click', function () {
+                amazon.loadKeys().then(function () {
+                    var authorNode = document.getElementById("authorSelector");
+                    var titleNode = document.getElementById("title");
+                    var author = authorNode.options[authorNode.selectedIndex].text;
+
+                    amazon.bookSearch.getDetails({
+                        Author: author,
+                        Title: titleNode.value,
+                        ResponseGroup: 'ItemAttributes,Images'
+                    }).then(function (res) {
+                        var cover = document.getElementById("cover");
+                        cover.src = res.getLargest()[0].url;
+
+                    });
+
+
+                });
+            });
+        });
+    }
+
+    function addSaveCommandHandler() {
+        var saveButton = document.getElementById('cmdSave');
+        saveButton.addEventListener('click', function () {
+            var authorNode = document.getElementById("authorSelector");
+            var author = authorNode.options[authorNode.selectedIndex];
+
+
+            require(['/js/Infra/database.js'], function (database) {
+                database.addBooks([{
+                    title: 'ALMA',
+                    authorid: author.value
+                }]);
+            });
+        });
+    }
+
         WinJS.UI.Pages.define("/pages/addNewBook/addNewBook.html", {
             // This function is called whenever a user navigates to this page. It
             // populates the page elements with the app's data.
@@ -9,7 +50,7 @@
                 // TODO: Initialize the page here.
                 
                 
-                    require(["data", "/js/Infra/amazon.js", '/js/Infra/templateLoader.js'], function (data, amazon, loader) {
+                    require(["data", '/js/Infra/templateLoader.js'], function (data, loader) {
                     loader.load('pages\\addNewBook\\templates').done(function () {
                         var view = Ember.View.create({
                             templateName: 'authors',
@@ -24,41 +65,10 @@
                         });
                         
                         view.appendTo('#selectauthor');
+
+                        addMetaCommandHandler();
+                        addSaveCommandHandler();
                         
-                        var metaButton = document.getElementById('cmdGetMeta');
-                        metaButton.addEventListener('click', function () {
-                            amazon.loadKeys().then(function () {
-                                var authorNode = document.getElementById("authorSelector");
-                                var titleNode = document.getElementById("title");
-                                var author = authorNode.options[authorNode.selectedIndex].text;
-
-                                amazon.bookSearch.getDetails({
-                                    Author: author,
-                                    Title: titleNode.value,
-                                    ResponseGroup: 'ItemAttributes,Images'
-                                }).then(function (res) {
-                                    var cover = document.getElementById("cover");
-                                    cover.src = res.getLargest()[0].url;
-
-                                });
-
-
-                            });
-                        });
-                        
-                        var saveButton = document.getElementById('cmdSave');
-                        saveButton.addEventListener('click', function () {
-                            var authorNode = document.getElementById("authorSelector");
-                            var author = authorNode.options[authorNode.selectedIndex];
-                            
-                            
-                            require(['/js/Infra/database.js'], function(database) {
-                                database.addBooks([{
-                                    title: 'ALMA',
-                                    authorid: author.value 
-                                }]);
-                            });
-                        });
 
 
                     }, function (err) {
