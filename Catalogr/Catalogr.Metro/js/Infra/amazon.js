@@ -1,9 +1,5 @@
 ﻿define(["External/jsSha2/sha2"], function() {
-
-
         "use strict";
-
-       
 
         var accessKeyId,
             secretAccessKey;
@@ -46,10 +42,6 @@
             lines.forEach(function(line) {
                 unsignedUrl += line;
             });
-
-            //for (var i in lines) {
-            //    unsignedUrl += lines[i];
-            //}
 
             // find host and query portions
             var urlregex = new RegExp("^http:\\/\\/(.*)\\/onca\\/xml\\?(.*)$");
@@ -221,8 +213,52 @@
                 var url = "http://" + domain + parameters.join('&');
                 return url;
             }
+            
+            function Image(node) {
+                this.url = node.getElementsByTagName("URL")[0].innerText;
+                this.width = node.getElementsByTagName("Width")[0].innerText;
+                this.height = node.getElementsByTagName("Height")[0].innerText;
+            }
+            
+            function Images(options) {
+                return {
+                    small: options.small,
+                    medium: options.medium,
+                    large: options.large,
+                    
+                    getLargest: function(){
+                        if(this.large) {
+                            return this.large;
+                        } else if (this.medium) {
+                            return this.medium;
+                        } else {
+                            return this.small;
+                        }
+                    }
+                };
+            }
+            
+            
 
             function getDetails(params) {
+                function getImages(xmlDoc) {
+                    var medium = xmlDoc.getElementsByTagName("MediumImage");
+                    var large = xmlDoc.getElementsByTagName("LargeImage");
+
+                    var mediumImages = medium.map(function (imageNode) {
+                        return new Image(imageNode);
+                    });
+
+                    var largeImages = large.map(function (imageNode) {
+                        return new Image(imageNode);
+                    });
+
+                    return {
+                        medium: mediumImages,
+                        large: largeImages
+                    };
+                }
+
                 return new WinJS.Promise(function(comp, err) {
 
                     //var url = "http://ecs.amazonaws.co.uk/onca/xml?Service=AWSECommerceService&AWSAccessKeyId=AKIAJOHMUMYIJ43O4DJQ&Operation=ItemSearch&Author=Homer&ResponseGroup=ItemAttributes,Images,Variations&SearchIndex=Books&Sort=salesrank&AssociateTag=mytag-20";
@@ -244,10 +280,9 @@
                             var doc = new Windows.Data.Xml.Dom.XmlDocument();
                             doc.loadXml(xml, loadSettings);
 
-                            comp({
-                                mediumImage: doc.getElementsByTagName("MediumImage")[0],
-                                largeImage: doc.getElementsByTagName("LargeImage")[0]
-                            });
+                            
+                                
+                            comp(new Images(getImages(doc)));
                         },
                         function error(request) {
                             // handle error conditions.

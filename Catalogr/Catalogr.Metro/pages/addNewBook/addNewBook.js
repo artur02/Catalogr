@@ -39,13 +39,8 @@
                                     Title: titleNode.value,
                                     ResponseGroup: 'ItemAttributes,Images'
                                 }).then(function (res) {
-                                    var urlNodes = res.largeImage.getElementsByTagName("URL");
-                                    var widthNodes = res.largeImage.getElementsByTagName("Width");
-                                    var heightNodes = res.largeImage.getElementsByTagName("Height");
-                                    var actualHeight = heightNodes[0].innerText;
-                                    
                                     var cover = document.getElementById("cover");
-                                    cover.src = urlNodes[0].innerText;
+                                    cover.src = res.getLargest()[0].url;
 
                                 });
 
