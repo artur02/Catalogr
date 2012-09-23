@@ -117,9 +117,11 @@
             // TODO: Replace the data with your real data.
             // You can add data from asynchronous sources whenever it becomes available.
             return  generateSampleData().then(function(res) {
-                res.forEach(function(item) {
-                    list.push(item);
-                });
+                if (list.length === 0) {
+                    res.forEach(function(item) {
+                        list.push(item);
+                    });
+                }
             });
         }
     });
