@@ -1,9 +1,10 @@
-﻿define(function () {
+﻿/*global console */
+
+define(function () {
     "use strict";
 
     function argToArray(arg) {
-        var i, len,
-                args = [];
+        var i, len, args = [];
 
         for (i = 0, len = arg.length; i < len; i++) {
             args.push(arg[i]);

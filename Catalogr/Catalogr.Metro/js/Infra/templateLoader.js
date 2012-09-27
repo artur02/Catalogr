@@ -1,4 +1,7 @@
-﻿define([], function () {
+﻿/*global Ember */
+
+define([], function () {
+    "use strict";
     function TemplateCache() {
         var templateCache = {};
 
@@ -23,9 +26,7 @@
         };
     }
 
-    var cache = new TemplateCache();
-
-    
+    var cache = new TemplateCache();   
 
     function putCached(file) {
         return Windows.Storage.FileIO.readTextAsync(file).then(function(fileContent) {
@@ -66,7 +67,8 @@
                         },
                         function(e) {
                             err(e);
-                        });
+                        }
+                    );
                 });
             });
         });

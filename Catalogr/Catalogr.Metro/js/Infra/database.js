@@ -52,11 +52,11 @@ define(["config", "Infra/logger"], function (config, logger) {
     }
 
     function open(name, version) {
-        if(!name) {
+        if (!name) {
             name = config.db.name;
         }
         
-        if(!version) {
+        if (!version) {
             version = config.db.version;
         }
 
@@ -194,7 +194,7 @@ define(["config", "Infra/logger"], function (config, logger) {
                             logger.error("Failed to add book: " + this.book + ".", "sample", "error");
                         };
                     } catch (error) {
-                        console.log();
+                        logger.error(error.message);
                     }
                 });
             });
@@ -229,7 +229,7 @@ define(["config", "Infra/logger"], function (config, logger) {
                         logger.error("Failed to add author: " + this.author + ".", "sample", "error");
                     };
                 } catch (error) {
-                    console.log();
+                    logger.error(error.message);
                 }
             });
         });

@@ -1,5 +1,6 @@
 ﻿/*globals $, define, Ember*/
 define([], function () {
+    "use strict";
 
     function viewToDom(view) {
         var buffer = new Ember.RenderBuffer();
@@ -11,4 +12,4 @@ define([], function () {
     return {
         viewToDom: viewToDom
     };
-})
+});
