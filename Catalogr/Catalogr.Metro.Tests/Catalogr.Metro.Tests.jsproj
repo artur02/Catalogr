@@ -62,6 +62,9 @@
     <Content Include="..\Catalogr.Metro\js\default.js">
       <Link>SUT\default.js</Link>
     </Content>
+    <Content Include="..\Catalogr.Metro\js\External\require.js">
+      <Link>js\require.js</Link>
+    </Content>
     <Content Include="..\Catalogr.Metro\js\Infra\Amazon.js">
       <Link>SUT\Infra\Amazon.js</Link>
     </Content>
@@ -87,12 +90,16 @@
     <Content Include="lib\chai.js" />
     <Content Include="lib\mocha.css" />
     <Content Include="lib\mocha.js" />
+    <Content Include="lib\sinon-1.4.2.js" />
+    <Content Include="Specs\ExampleTest.js" />
+    <Content Include="Specs\Infra\database.specs.js" />
     <None Include="Catalogr.Metro.Tests_TemporaryKey.pfx" />
   </ItemGroup>
   <ItemGroup>
     <SDKReference Include="Microsoft.WinJS.1.0, Version=1.0" />
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="Specs\Stubs\" />
     <Folder Include="SUT\Infra\" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\$(WMSJSProjectDirectory)\Microsoft.VisualStudio.$(WMSJSProject).targets" />

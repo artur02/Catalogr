@@ -5,28 +5,32 @@
     <title>Catalogr.Metro.Tests</title>
 
     <!-- WinJS references -->
-    <link href="//Microsoft.WinJS.1.0/css/ui-dark.css" rel="stylesheet" />
+    <!--<link href="//Microsoft.WinJS.1.0/css/ui-dark.css" rel="stylesheet" />-->
     <script src="//Microsoft.WinJS.1.0/js/base.js"></script>
     <script src="//Microsoft.WinJS.1.0/js/ui.js"></script>
+
     
     <link rel="stylesheet" type="text/css" href="lib/mocha.css">
     <script src="lib/mocha.js"></script>
     <script src="lib/chai.js"></script>
      <!-- choose the style that you want for tests first -->
     <script>mocha.setup('bdd')</script>
+
+    <script src="lib/sinon-1.4.2.js"></script>
+    <script src="js/require.js"></script>
+        
     
-    
-    <script src="SUT/Infra/Amazon.js"></script>
+    <script src="Specs/Infra/database.specs.js"></script>
+
 
     <!-- Catalogr.Metro.Tests references -->
     <link href="/css/default.css" rel="stylesheet" />
     <script src="/js/default.js"></script>
 </head>
 <body>
-    <p>Content goes here</p>
+    <p>Catalogr.Metro tests</p>
     
     <div id="mocha">
         <!-- This div is a hook for the test harness. -->
     </div>
-</body>
 </html>
