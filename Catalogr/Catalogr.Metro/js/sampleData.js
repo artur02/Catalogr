@@ -44,9 +44,9 @@
                             authors.push(author);
                         }
 
-                        database.addBooks(books).then(function () {
+                        database.books.add(books).then(function () {
                             logger.info("Sample data - books stored");
-                            return database.addAuthors(authors);
+                            return database.authors.add(authors);
                         }).done(function () {
                                 logger.info("Sample data - authors stored");
                             },
