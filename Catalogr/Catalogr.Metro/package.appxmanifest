@@ -16,6 +16,7 @@
   <Applications>
     <Application Id="App" StartPage="default.html">
       <VisualElements DisplayName="Catalogr" Logo="images\logo.png" SmallLogo="images\smalllogo.png" Description="Book cataloger for Windows 8" ForegroundText="light" BackgroundColor="#464646">
+        <DefaultTile ShortName="Catalogr" ShowName="allLogos" />
         <SplashScreen Image="images\splashscreen.png" />
       </VisualElements>
     </Application>
