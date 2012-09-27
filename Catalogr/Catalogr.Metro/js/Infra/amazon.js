@@ -84,17 +84,15 @@ define(["External/jsSha2/sha2"], function() {
     }
 
     function encodeNameValuePairs(pairs) {
-        for (var i = 0; i < pairs.length; i++) {
+        pairs.forEach(function (pair, i) {
             var name = "";
             var value = "";
-
-            var pair = pairs[i];
             var index = pair.indexOf("=");
 
             // take care of special cases like "&foo&", "&foo=&" and "&=foo&" 
-            if (index == -1) {
+            if (index === -1) {
                 name = pair;
-            } else if (index == 0) {
+            } else if (index === 0) {
                 value = pair;
             } else {
                 name = pair.substring(0, index);
@@ -109,7 +107,7 @@ define(["External/jsSha2/sha2"], function() {
             value = encodeURIComponent(decodeURIComponent(value));
 
             pairs[i] = name + "=" + value;
-        }
+        });
 
         return pairs;
     }
@@ -123,12 +121,12 @@ define(["External/jsSha2/sha2"], function() {
         var i = 0;
         while (i < nPairs) {
             var p = pairs[i];
-            if (p.search(/^Timestamp=/) != -1) {
+            if (p.search(/^Timestamp=/) !== -1) {
                 haveTimestamp = true;
-            } else if (p.search(/^(AWSAccessKeyId|SubscriptionId)=/) != -1) {
+            } else if (p.search(/^(AWSAccessKeyId|SubscriptionId)=/) !== -1) {
                 pairs.splice(i, 1, "AWSAccessKeyId=" + accessKeyId);
                 haveAwsId = true;
-            } else if (p.search(/^Signature=/) != -1) {
+            } else if (p.search(/^Signature=/) !== -1) {
                 pairs.splice(i, 1);
                 i--;
                 nPairs--;
@@ -154,7 +152,7 @@ define(["External/jsSha2/sha2"], function() {
             secretBytes = core_sha256(secretBytes, secret.length * chrsz);
         }
 
-        var ipad = Array(16), opad = Array(16);
+        var ipad = new Array(16), opad = new Array(16);
         for (var i = 0; i < 16; i++) {
             ipad[i] = secretBytes[i] ^ 0x36363636;
             opad[i] = secretBytes[i] ^ 0x5C5C5C5C;
