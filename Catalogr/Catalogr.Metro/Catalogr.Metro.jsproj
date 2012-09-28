@@ -112,6 +112,7 @@
     <Content Include="pages\groupedItems\groupedItems.css" />
     <Content Include="default.html" />
     <Content Include="pages\itemDetail\templates\detail.html" />
+    <None Include="Samples\amazon_response.xml" />
     <None Include="Catalogr.Metro_TemporaryKey.pfx" />
   </ItemGroup>
   <ItemGroup>

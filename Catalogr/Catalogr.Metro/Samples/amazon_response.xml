@@ -1,0 +1,1084 @@
+﻿"<?xml version=\"1.0\" ?><ItemSearchResponse xmlns=\"http://webservices.amazon.com/AWSECommerceService/2011-08-01\">
+  <OperationRequest>
+    <HTTPHeaders>
+      <Header Name=\"UserAgent\" Value=\"Mozilla/5.0 (compatible; MSIE 10.0; Windows NT 6.2; Trident/6.0; MSAppHost/1.0)\"></Header>
+    </HTTPHeaders>
+    <RequestId>05aa9d56-bd7a-40dc-b9c4-20c8cb49bedb</RequestId>
+    <Arguments>
+      <Argument Name=\"Operation\" Value=\"ItemSearch\"></Argument>
+      <Argument Name=\"Service\" Value=\"AWSECommerceService\"></Argument>
+      <Argument Name=\"Author\" Value=\"Jules Verne\"></Argument>
+      <Argument Name=\"Signature\" Value=\"XcaUHqZn4K3xHREsB96w8FOIDg8FDh0/RERkLXkrcFw=\"></Argument>
+      <Argument Name=\"AssociateTag\" Value=\"mytag-20\"></Argument>
+      <Argument Name=\"AWSAccessKeyId\" Value=\"AKIAJOHMUMYIJ43O4DJQ\"></Argument>
+      <Argument Name=\"Timestamp\" Value=\"2012-09-28T15:34:25.989Z\"></Argument>
+      <Argument Name=\"Title\"></Argument>
+      <Argument Name=\"ResponseGroup\" Value=\"ItemAttributes,Images\"></Argument>
+      <Argument Name=\"SearchIndex\" Value=\"Books\"></Argument>
+    </Arguments>
+    <RequestProcessingTime>0.0798670000000000</RequestProcessingTime>
+  </OperationRequest>
+  <Items>
+    <Request>
+      <IsValid>True</IsValid>
+      <ItemSearchRequest>
+        <Author>Jules Verne</Author>
+        <ResponseGroup>ItemAttributes</ResponseGroup>
+        <ResponseGroup>Images</ResponseGroup>
+        <SearchIndex>Books</SearchIndex>
+      </ItemSearchRequest>
+    </Request>
+    <TotalResults>7907</TotalResults>
+    <TotalPages>791</TotalPages>
+    <MoreSearchResultsUrl>http://www.amazon.co.uk/gp/redirect.html?camp=2025&amp;creative=12734&amp;location=http%3A%2F%2Fwww.amazon.co.uk%2Fgp%2Fsearch%3Fkeywords%3DJules%2BVerne%26url%3Dsearch-alias%253Dbooks-single-index&amp;linkCode=xm2&amp;tag=mytag-20&amp;SubscriptionId=AKIAJOHMUMYIJ43O4DJQ</MoreSearchResultsUrl>
+    <Item>
+      <ASIN>B000JMLBHU</ASIN>
+      <DetailPageURL>http://www.amazon.co.uk/The-Mysterious-Island-ebook/dp/B000JMLBHU%3FSubscriptionId%3DAKIAJOHMUMYIJ43O4DJQ%26tag%3Dmytag-20%26linkCode%3Dxm2%26camp%3D2025%26creative%3D165953%26creativeASIN%3DB000JMLBHU</DetailPageURL>
+      <ItemLinks>
+        <ItemLink>
+          <Description>Add To Wishlist</Description>
+          <URL>http://www.amazon.co.uk/gp/registry/wishlist/add-item.html%3Fasin.0%3DB000JMLBHU%26SubscriptionId%3DAKIAJOHMUMYIJ43O4DJQ%26tag%3Dmytag-20%26linkCode%3Dxm2%26camp%3D2025%26creative%3D12734%26creativeASIN%3DB000JMLBHU</URL>
+        </ItemLink>
+        <ItemLink>
+          <Description>Tell A Friend</Description>
+          <URL>http://www.amazon.co.uk/gp/pdp/taf/B000JMLBHU%3FSubscriptionId%3DAKIAJOHMUMYIJ43O4DJQ%26tag%3Dmytag-20%26linkCode%3Dxm2%26camp%3D2025%26creative%3D12734%26creativeASIN%3DB000JMLBHU</URL>
+        </ItemLink>
+        <ItemLink>
+          <Description>All Customer Reviews</Description>
+          <URL>http://www.amazon.co.uk/review/product/B000JMLBHU%3FSubscriptionId%3DAKIAJOHMUMYIJ43O4DJQ%26tag%3Dmytag-20%26linkCode%3Dxm2%26camp%3D2025%26creative%3D12734%26creativeASIN%3DB000JMLBHU</URL>
+        </ItemLink>
+        <ItemLink>
+          <Description>All Offers</Description>
+          <URL>http://www.amazon.co.uk/gp/offer-listing/B000JMLBHU%3FSubscriptionId%3DAKIAJOHMUMYIJ43O4DJQ%26tag%3Dmytag-20%26linkCode%3Dxm2%26camp%3D2025%26creative%3D12734%26creativeASIN%3DB000JMLBHU</URL>
+        </ItemLink>
+      </ItemLinks>
+      <SmallImage>
+        <URL>http://ecx.images-amazon.com/images/I/41eKlfwOTsL._SL75_.jpg</URL>
+        <Height Units=\"pixels\">75</Height>
+        <Width Units=\"pixels\">50</Width>
+      </SmallImage>
+      <MediumImage>
+        <URL>http://ecx.images-amazon.com/images/I/41eKlfwOTsL._SL160_.jpg</URL>
+        <Height Units=\"pixels\">160</Height>
+        <Width Units=\"pixels\">107</Width>
+      </MediumImage>
+      <LargeImage>
+        <URL>http://ecx.images-amazon.com/images/I/41eKlfwOTsL.jpg</URL>
+        <Height Units=\"pixels\">500</Height>
+        <Width Units=\"pixels\">333</Width>
+      </LargeImage>
+      <ImageSets>
+        <ImageSet Category=\"primary\">
+          <SwatchImage>
+            <URL>http://ecx.images-amazon.com/images/I/41eKlfwOTsL._SL30_.jpg</URL>
+            <Height Units=\"pixels\">30</Height>
+            <Width Units=\"pixels\">20</Width>
+          </SwatchImage>
+          <SmallImage>
+            <URL>http://ecx.images-amazon.com/images/I/41eKlfwOTsL._SL75_.jpg</URL>
+            <Height Units=\"pixels\">75</Height>
+            <Width Units=\"pixels\">50</Width>
+          </SmallImage>
+          <ThumbnailImage>
+            <URL>http://ecx.images-amazon.com/images/I/41eKlfwOTsL._SL75_.jpg</URL>
+            <Height Units=\"pixels\">75</Height>
+            <Width Units=\"pixels\">50</Width>
+          </ThumbnailImage>
+          <TinyImage>
+            <URL>http://ecx.images-amazon.com/images/I/41eKlfwOTsL._SL110_.jpg</URL>
+            <Height Units=\"pixels\">110</Height>
+            <Width Units=\"pixels\">73</Width>
+          </TinyImage>
+          <MediumImage>
+            <URL>http://ecx.images-amazon.com/images/I/41eKlfwOTsL._SL160_.jpg</URL>
+            <Height Units=\"pixels\">160</Height>
+            <Width Units=\"pixels\">107</Width>
+          </MediumImage>
+          <LargeImage>
+            <URL>http://ecx.images-amazon.com/images/I/41eKlfwOTsL.jpg</URL>
+            <Height Units=\"pixels\">500</Height>
+            <Width Units=\"pixels\">333</Width>
+          </LargeImage>
+        </ImageSet>
+      </ImageSets>
+      <ItemAttributes>
+        <Author>Jules Verne</Author>
+        <Binding>Kindle Edition</Binding>
+        <Format>Kindle eBook</Format>
+        <Label>Public Domain Books</Label>
+        <Languages>
+          <Language>
+            <Name>English</Name>
+            <Type>Published</Type>
+          </Language>
+        </Languages>
+        <Manufacturer>Public Domain Books</Manufacturer>
+        <NumberOfItems>1</NumberOfItems>
+        <NumberOfPages>528</NumberOfPages>
+        <ProductGroup>eBooks</ProductGroup>
+        <ProductTypeName>ABIS_EBOOKS</ProductTypeName>
+        <PublicationDate>1998-04-01</PublicationDate>
+        <Publisher>Public Domain Books</Publisher>
+        <ReleaseDate>1998-04-01</ReleaseDate>
+        <Studio>Public Domain Books</Studio>
+        <Title>The Mysterious Island</Title>
+      </ItemAttributes>
+    </Item>
+    <Item>
+      <ASIN>B0083Z6ESG</ASIN>
+      <DetailPageURL>http://www.amazon.co.uk/Around-World-80-Days-ebook/dp/B0083Z6ESG%3FSubscriptionId%3DAKIAJOHMUMYIJ43O4DJQ%26tag%3Dmytag-20%26linkCode%3Dxm2%26camp%3D2025%26creative%3D165953%26creativeASIN%3DB0083Z6ESG</DetailPageURL>
+      <ItemLinks>
+        <ItemLink>
+          <Description>Add To Wishlist</Description>
+          <URL>http://www.amazon.co.uk/gp/registry/wishlist/add-item.html%3Fasin.0%3DB0083Z6ESG%26SubscriptionId%3DAKIAJOHMUMYIJ43O4DJQ%26tag%3Dmytag-20%26linkCode%3Dxm2%26camp%3D2025%26creative%3D12734%26creativeASIN%3DB0083Z6ESG</URL>
+        </ItemLink>
+        <ItemLink>
+          <Description>Tell A Friend</Description>
+          <URL>http://www.amazon.co.uk/gp/pdp/taf/B0083Z6ESG%3FSubscriptionId%3DAKIAJOHMUMYIJ43O4DJQ%26tag%3Dmytag-20%26linkCode%3Dxm2%26camp%3D2025%26creative%3D12734%26creativeASIN%3DB0083Z6ESG</URL>
+        </ItemLink>
+        <ItemLink>
+          <Description>All Customer Reviews</Description>
+          <URL>http://www.amazon.co.uk/review/product/B0083Z6ESG%3FSubscriptionId%3DAKIAJOHMUMYIJ43O4DJQ%26tag%3Dmytag-20%26linkCode%3Dxm2%26camp%3D2025%26creative%3D12734%26creativeASIN%3DB0083Z6ESG</URL>
+        </ItemLink>
+        <ItemLink>
+          <Description>All Offers</Description>
+          <URL>http://www.amazon.co.uk/gp/offer-listing/B0083Z6ESG%3FSubscriptionId%3DAKIAJOHMUMYIJ43O4DJQ%26tag%3Dmytag-20%26linkCode%3Dxm2%26camp%3D2025%26creative%3D12734%26creativeASIN%3DB0083Z6ESG</URL>
+        </ItemLink>
+      </ItemLinks>
+      <SmallImage>
+        <URL>http://ecx.images-amazon.com/images/I/41IAaRV7LIL._SL75_.jpg</URL>
+        <Height Units=\"pixels\">75</Height>
+        <Width Units=\"pixels\">50</Width>
+      </SmallImage>
+      <MediumImage>
+        <URL>http://ecx.images-amazon.com/images/I/41IAaRV7LIL._SL160_.jpg</URL>
+        <Height Units=\"pixels\">160</Height>
+        <Width Units=\"pixels\">107</Width>
+      </MediumImage>
+      <LargeImage>
+        <URL>http://ecx.images-amazon.com/images/I/41IAaRV7LIL.jpg</URL>
+        <Height Units=\"pixels\">500</Height>
+        <Width Units=\"pixels\">333</Width>
+      </LargeImage>
+      <ImageSets>
+        <ImageSet Category=\"primary\">
+          <SwatchImage>
+            <URL>http://ecx.images-amazon.com/images/I/41IAaRV7LIL._SL30_.jpg</URL>
+            <Height Units=\"pixels\">30</Height>
+            <Width Units=\"pixels\">20</Width>
+          </SwatchImage>
+          <SmallImage>
+            <URL>http://ecx.images-amazon.com/images/I/41IAaRV7LIL._SL75_.jpg</URL>
+            <Height Units=\"pixels\">75</Height>
+            <Width Units=\"pixels\">50</Width>
+          </SmallImage>
+          <ThumbnailImage>
+            <URL>http://ecx.images-amazon.com/images/I/41IAaRV7LIL._SL75_.jpg</URL>
+            <Height Units=\"pixels\">75</Height>
+            <Width Units=\"pixels\">50</Width>
+          </ThumbnailImage>
+          <TinyImage>
+            <URL>http://ecx.images-amazon.com/images/I/41IAaRV7LIL._SL110_.jpg</URL>
+            <Height Units=\"pixels\">110</Height>
+            <Width Units=\"pixels\">73</Width>
+          </TinyImage>
+          <MediumImage>
+            <URL>http://ecx.images-amazon.com/images/I/41IAaRV7LIL._SL160_.jpg</URL>
+            <Height Units=\"pixels\">160</Height>
+            <Width Units=\"pixels\">107</Width>
+          </MediumImage>
+          <LargeImage>
+            <URL>http://ecx.images-amazon.com/images/I/41IAaRV7LIL.jpg</URL>
+            <Height Units=\"pixels\">500</Height>
+            <Width Units=\"pixels\">333</Width>
+          </LargeImage>
+        </ImageSet>
+      </ImageSets>
+      <ItemAttributes>
+        <Author>Jules Verne</Author>
+        <Binding>Kindle Edition</Binding>
+        <Format>Kindle eBook</Format>
+        <IsAdultProduct>0</IsAdultProduct>
+        <Languages>
+          <Language>
+            <Name>English</Name>
+            <Type>Published</Type>
+          </Language>
+        </Languages>
+        <NumberOfItems>1</NumberOfItems>
+        <NumberOfPages>154</NumberOfPages>
+        <ProductGroup>eBooks</ProductGroup>
+        <ProductTypeName>ABIS_EBOOKS</ProductTypeName>
+        <PublicationDate>2012-05-16</PublicationDate>
+        <ReleaseDate>2012-05-16</ReleaseDate>
+        <Title>Around the World in 80 Days</Title>
+      </ItemAttributes>
+    </Item>
+    <Item>
+      <ASIN>B002C4KQE2</ASIN>
+      <DetailPageURL>http://www.amazon.co.uk/Works-Jules-active-contents-ebook/dp/B002C4KQE2%3FSubscriptionId%3DAKIAJOHMUMYIJ43O4DJQ%26tag%3Dmytag-20%26linkCode%3Dxm2%26camp%3D2025%26creative%3D165953%26creativeASIN%3DB002C4KQE2</DetailPageURL>
+      <ItemLinks>
+        <ItemLink>
+          <Description>Add To Wishlist</Description>
+          <URL>http://www.amazon.co.uk/gp/registry/wishlist/add-item.html%3Fasin.0%3DB002C4KQE2%26SubscriptionId%3DAKIAJOHMUMYIJ43O4DJQ%26tag%3Dmytag-20%26linkCode%3Dxm2%26camp%3D2025%26creative%3D12734%26creativeASIN%3DB002C4KQE2</URL>
+        </ItemLink>
+        <ItemLink>
+          <Description>Tell A Friend</Description>
+          <URL>http://www.amazon.co.uk/gp/pdp/taf/B002C4KQE2%3FSubscriptionId%3DAKIAJOHMUMYIJ43O4DJQ%26tag%3Dmytag-20%26linkCode%3Dxm2%26camp%3D2025%26creative%3D12734%26creativeASIN%3DB002C4KQE2</URL>
+        </ItemLink>
+        <ItemLink>
+          <Description>All Customer Reviews</Description>
+          <URL>http://www.amazon.co.uk/review/product/B002C4KQE2%3FSubscriptionId%3DAKIAJOHMUMYIJ43O4DJQ%26tag%3Dmytag-20%26linkCode%3Dxm2%26camp%3D2025%26creative%3D12734%26creativeASIN%3DB002C4KQE2</URL>
+        </ItemLink>
+        <ItemLink>
+          <Description>All Offers</Description>
+          <URL>http://www.amazon.co.uk/gp/offer-listing/B002C4KQE2%3FSubscriptionId%3DAKIAJOHMUMYIJ43O4DJQ%26tag%3Dmytag-20%26linkCode%3Dxm2%26camp%3D2025%26creative%3D12734%26creativeASIN%3DB002C4KQE2</URL>
+        </ItemLink>
+      </ItemLinks>
+      <SmallImage>
+        <URL>http://ecx.images-amazon.com/images/I/61iFZisXbfL._SL75_.jpg</URL>
+        <Height Units=\"pixels\">75</Height>
+        <Width Units=\"pixels\">53</Width>
+      </SmallImage>
+      <MediumImage>
+        <URL>http://ecx.images-amazon.com/images/I/61iFZisXbfL._SL160_.jpg</URL>
+        <Height Units=\"pixels\">160</Height>
+        <Width Units=\"pixels\">114</Width>
+      </MediumImage>
+      <LargeImage>
+        <URL>http://ecx.images-amazon.com/images/I/61iFZisXbfL.jpg</URL>
+        <Height Units=\"pixels\">500</Height>
+        <Width Units=\"pixels\">355</Width>
+      </LargeImage>
+      <ImageSets>
+        <ImageSet Category=\"primary\">
+          <SwatchImage>
+            <URL>http://ecx.images-amazon.com/images/I/61iFZisXbfL._SL30_.jpg</URL>
+            <Height Units=\"pixels\">30</Height>
+            <Width Units=\"pixels\">21</Width>
+          </SwatchImage>
+          <SmallImage>
+            <URL>http://ecx.images-amazon.com/images/I/61iFZisXbfL._SL75_.jpg</URL>
+            <Height Units=\"pixels\">75</Height>
+            <Width Units=\"pixels\">53</Width>
+          </SmallImage>
+          <ThumbnailImage>
+            <URL>http://ecx.images-amazon.com/images/I/61iFZisXbfL._SL75_.jpg</URL>
+            <Height Units=\"pixels\">75</Height>
+            <Width Units=\"pixels\">53</Width>
+          </ThumbnailImage>
+          <TinyImage>
+            <URL>http://ecx.images-amazon.com/images/I/61iFZisXbfL._SL110_.jpg</URL>
+            <Height Units=\"pixels\">110</Height>
+            <Width Units=\"pixels\">78</Width>
+          </TinyImage>
+          <MediumImage>
+            <URL>http://ecx.images-amazon.com/images/I/61iFZisXbfL._SL160_.jpg</URL>
+            <Height Units=\"pixels\">160</Height>
+            <Width Units=\"pixels\">114</Width>
+          </MediumImage>
+          <LargeImage>
+            <URL>http://ecx.images-amazon.com/images/I/61iFZisXbfL.jpg</URL>
+            <Height Units=\"pixels\">500</Height>
+            <Width Units=\"pixels\">355</Width>
+          </LargeImage>
+        </ImageSet>
+      </ImageSets>
+      <ItemAttributes>
+        <Author>Jules Verne</Author>
+        <Binding>Kindle Edition</Binding>
+        <Format>Kindle eBook</Format>
+        <Label>Raleigh St. Clair Books</Label>
+        <Languages>
+          <Language>
+            <Name>English</Name>
+            <Type>Unknown</Type>
+          </Language>
+          <Language>
+            <Name>English</Name>
+            <Type>Published</Type>
+          </Language>
+        </Languages>
+        <Manufacturer>Raleigh St. Clair Books</Manufacturer>
+        <NumberOfItems>1</NumberOfItems>
+        <NumberOfPages>432</NumberOfPages>
+        <ProductGroup>eBooks</ProductGroup>
+        <ProductTypeName>ABIS_EBOOKS</ProductTypeName>
+        <PublicationDate>2009-06-03</PublicationDate>
+        <Publisher>Raleigh St. Clair Books</Publisher>
+        <ReleaseDate>2009-06-03</ReleaseDate>
+        <Studio>Raleigh St. Clair Books</Studio>
+        <Title>The Works of Jules Verne (27 Books with active table of contents)</Title>
+      </ItemAttributes>
+    </Item>
+    <Item>
+      <ASIN>B004UJTUKI</ASIN>
+      <DetailPageURL>http://www.amazon.co.uk/From-Earth-Moon-Round-ebook/dp/B004UJTUKI%3FSubscriptionId%3DAKIAJOHMUMYIJ43O4DJQ%26tag%3Dmytag-20%26linkCode%3Dxm2%26camp%3D2025%26creative%3D165953%26creativeASIN%3DB004UJTUKI</DetailPageURL>
+      <ItemLinks>
+        <ItemLink>
+          <Description>Add To Wishlist</Description>
+          <URL>http://www.amazon.co.uk/gp/registry/wishlist/add-item.html%3Fasin.0%3DB004UJTUKI%26SubscriptionId%3DAKIAJOHMUMYIJ43O4DJQ%26tag%3Dmytag-20%26linkCode%3Dxm2%26camp%3D2025%26creative%3D12734%26creativeASIN%3DB004UJTUKI</URL>
+        </ItemLink>
+        <ItemLink>
+          <Description>Tell A Friend</Description>
+          <URL>http://www.amazon.co.uk/gp/pdp/taf/B004UJTUKI%3FSubscriptionId%3DAKIAJOHMUMYIJ43O4DJQ%26tag%3Dmytag-20%26linkCode%3Dxm2%26camp%3D2025%26creative%3D12734%26creativeASIN%3DB004UJTUKI</URL>
+        </ItemLink>
+        <ItemLink>
+          <Description>All Customer Reviews</Description>
+          <URL>http://www.amazon.co.uk/review/product/B004UJTUKI%3FSubscriptionId%3DAKIAJOHMUMYIJ43O4DJQ%26tag%3Dmytag-20%26linkCode%3Dxm2%26camp%3D2025%26creative%3D12734%26creativeASIN%3DB004UJTUKI</URL>
+        </ItemLink>
+        <ItemLink>
+          <Description>All Offers</Description>
+          <URL>http://www.amazon.co.uk/gp/offer-listing/B004UJTUKI%3FSubscriptionId%3DAKIAJOHMUMYIJ43O4DJQ%26tag%3Dmytag-20%26linkCode%3Dxm2%26camp%3D2025%26creative%3D12734%26creativeASIN%3DB004UJTUKI</URL>
+        </ItemLink>
+      </ItemLinks>
+      <SmallImage>
+        <URL>http://ecx.images-amazon.com/images/I/51GUI07q9lL._SL75_.jpg</URL>
+        <Height Units=\"pixels\">75</Height>
+        <Width Units=\"pixels\">50</Width>
+      </SmallImage>
+      <MediumImage>
+        <URL>http://ecx.images-amazon.com/images/I/51GUI07q9lL._SL160_.jpg</URL>
+        <Height Units=\"pixels\">160</Height>
+        <Width Units=\"pixels\">107</Width>
+      </MediumImage>
+      <LargeImage>
+        <URL>http://ecx.images-amazon.com/images/I/51GUI07q9lL.jpg</URL>
+        <Height Units=\"pixels\">500</Height>
+        <Width Units=\"pixels\">333</Width>
+      </LargeImage>
+      <ImageSets>
+        <ImageSet Category=\"primary\">
+          <SwatchImage>
+            <URL>http://ecx.images-amazon.com/images/I/51GUI07q9lL._SL30_.jpg</URL>
+            <Height Units=\"pixels\">30</Height>
+            <Width Units=\"pixels\">20</Width>
+          </SwatchImage>
+          <SmallImage>
+            <URL>http://ecx.images-amazon.com/images/I/51GUI07q9lL._SL75_.jpg</URL>
+            <Height Units=\"pixels\">75</Height>
+            <Width Units=\"pixels\">50</Width>
+          </SmallImage>
+          <ThumbnailImage>
+            <URL>http://ecx.images-amazon.com/images/I/51GUI07q9lL._SL75_.jpg</URL>
+            <Height Units=\"pixels\">75</Height>
+            <Width Units=\"pixels\">50</Width>
+          </ThumbnailImage>
+          <TinyImage>
+            <URL>http://ecx.images-amazon.com/images/I/51GUI07q9lL._SL110_.jpg</URL>
+            <Height Units=\"pixels\">110</Height>
+            <Width Units=\"pixels\">73</Width>
+          </TinyImage>
+          <MediumImage>
+            <URL>http://ecx.images-amazon.com/images/I/51GUI07q9lL._SL160_.jpg</URL>
+            <Height Units=\"pixels\">160</Height>
+            <Width Units=\"pixels\">107</Width>
+          </MediumImage>
+          <LargeImage>
+            <URL>http://ecx.images-amazon.com/images/I/51GUI07q9lL.jpg</URL>
+            <Height Units=\"pixels\">500</Height>
+            <Width Units=\"pixels\">333</Width>
+          </LargeImage>
+        </ImageSet>
+      </ImageSets>
+      <ItemAttributes>
+        <Author>Jules Verne</Author>
+        <Binding>Kindle Edition</Binding>
+        <Format>Kindle eBook</Format>
+        <Languages>
+          <Language>
+            <Name>English</Name>
+            <Type>Published</Type>
+          </Language>
+        </Languages>
+        <NumberOfItems>1</NumberOfItems>
+        <NumberOfPages>368</NumberOfPages>
+        <ProductGroup>eBooks</ProductGroup>
+        <ProductTypeName>ABIS_EBOOKS</ProductTypeName>
+        <PublicationDate>2011-03-30</PublicationDate>
+        <ReleaseDate>2011-03-30</ReleaseDate>
+        <Title>From the Earth to the Moon; and, Round the Moon</Title>
+      </ItemAttributes>
+    </Item>
+    <Item>
+      <ASIN>0746063024</ASIN>
+      <DetailPageURL>http://www.amazon.co.uk/Around-World-Eighty-Reading-Series/dp/0746063024%3FSubscriptionId%3DAKIAJOHMUMYIJ43O4DJQ%26tag%3Dmytag-20%26linkCode%3Dxm2%26camp%3D2025%26creative%3D165953%26creativeASIN%3D0746063024</DetailPageURL>
+      <ItemLinks>
+        <ItemLink>
+          <Description>Add To Wishlist</Description>
+          <URL>http://www.amazon.co.uk/gp/registry/wishlist/add-item.html%3Fasin.0%3D0746063024%26SubscriptionId%3DAKIAJOHMUMYIJ43O4DJQ%26tag%3Dmytag-20%26linkCode%3Dxm2%26camp%3D2025%26creative%3D12734%26creativeASIN%3D0746063024</URL>
+        </ItemLink>
+        <ItemLink>
+          <Description>Tell A Friend</Description>
+          <URL>http://www.amazon.co.uk/gp/pdp/taf/0746063024%3FSubscriptionId%3DAKIAJOHMUMYIJ43O4DJQ%26tag%3Dmytag-20%26linkCode%3Dxm2%26camp%3D2025%26creative%3D12734%26creativeASIN%3D0746063024</URL>
+        </ItemLink>
+        <ItemLink>
+          <Description>All Customer Reviews</Description>
+          <URL>http://www.amazon.co.uk/review/product/0746063024%3FSubscriptionId%3DAKIAJOHMUMYIJ43O4DJQ%26tag%3Dmytag-20%26linkCode%3Dxm2%26camp%3D2025%26creative%3D12734%26creativeASIN%3D0746063024</URL>
+        </ItemLink>
+        <ItemLink>
+          <Description>All Offers</Description>
+          <URL>http://www.amazon.co.uk/gp/offer-listing/0746063024%3FSubscriptionId%3DAKIAJOHMUMYIJ43O4DJQ%26tag%3Dmytag-20%26linkCode%3Dxm2%26camp%3D2025%26creative%3D12734%26creativeASIN%3D0746063024</URL>
+        </ItemLink>
+      </ItemLinks>
+      <SmallImage>
+        <URL>http://ecx.images-amazon.com/images/I/51JHgBOX%2BaL._SL75_.jpg</URL>
+        <Height Units=\"pixels\">75</Height>
+        <Width Units=\"pixels\">50</Width>
+      </SmallImage>
+      <MediumImage>
+        <URL>http://ecx.images-amazon.com/images/I/51JHgBOX%2BaL._SL160_.jpg</URL>
+        <Height Units=\"pixels\">160</Height>
+        <Width Units=\"pixels\">107</Width>
+      </MediumImage>
+      <LargeImage>
+        <URL>http://ecx.images-amazon.com/images/I/51JHgBOX%2BaL.jpg</URL>
+        <Height Units=\"pixels\">500</Height>
+        <Width Units=\"pixels\">335</Width>
+      </LargeImage>
+      <ImageSets>
+        <ImageSet Category=\"primary\">
+          <SwatchImage>
+            <URL>http://ecx.images-amazon.com/images/I/51JHgBOX%2BaL._SL30_.jpg</URL>
+            <Height Units=\"pixels\">30</Height>
+            <Width Units=\"pixels\">20</Width>
+          </SwatchImage>
+          <SmallImage>
+            <URL>http://ecx.images-amazon.com/images/I/51JHgBOX%2BaL._SL75_.jpg</URL>
+            <Height Units=\"pixels\">75</Height>
+            <Width Units=\"pixels\">50</Width>
+          </SmallImage>
+          <ThumbnailImage>
+            <URL>http://ecx.images-amazon.com/images/I/51JHgBOX%2BaL._SL75_.jpg</URL>
+            <Height Units=\"pixels\">75</Height>
+            <Width Units=\"pixels\">50</Width>
+          </ThumbnailImage>
+          <TinyImage>
+            <URL>http://ecx.images-amazon.com/images/I/51JHgBOX%2BaL._SL110_.jpg</URL>
+            <Height Units=\"pixels\">110</Height>
+            <Width Units=\"pixels\">74</Width>
+          </TinyImage>
+          <MediumImage>
+            <URL>http://ecx.images-amazon.com/images/I/51JHgBOX%2BaL._SL160_.jpg</URL>
+            <Height Units=\"pixels\">160</Height>
+            <Width Units=\"pixels\">107</Width>
+          </MediumImage>
+          <LargeImage>
+            <URL>http://ecx.images-amazon.com/images/I/51JHgBOX%2BaL.jpg</URL>
+            <Height Units=\"pixels\">500</Height>
+            <Width Units=\"pixels\">335</Width>
+          </LargeImage>
+        </ImageSet>
+      </ImageSets>
+      <ItemAttributes>
+        <Author>Jules Verne</Author>
+        <Binding>Hardcover</Binding>
+        <Creator Role=\"Adapter\">Jane Bingham</Creator>
+        <EAN>9780746063026</EAN>
+        <EANList>
+          <EANListElement>9780746063026</EANListElement>
+        </EANList>
+        <Feature>New</Feature>
+        <Feature>Mint Condition</Feature>
+        <Feature>Dispatch same day for order received before 12 noon</Feature>
+        <Feature>Guaranteed packaging</Feature>
+        <Feature>No quibbles returns</Feature>
+        <ISBN>0746063024</ISBN>
+        <ItemDimensions>
+          <Height Units=\"hundredths-inches\">803</Height>
+          <Length Units=\"hundredths-inches\">551</Length>
+          <Weight Units=\"hundredths-pounds\">49</Weight>
+          <Width Units=\"hundredths-inches\">51</Width>
+        </ItemDimensions>
+        <Label>Usborne Publishing Ltd</Label>
+        <Languages>
+          <Language>
+            <Name>English</Name>
+            <Type>Unknown</Type>
+          </Language>
+          <Language>
+            <Name>English</Name>
+            <Type>Original Language</Type>
+          </Language>
+          <Language>
+            <Name>French</Name>
+            <Type>Published</Type>
+          </Language>
+        </Languages>
+        <ListPrice>
+          <Amount>499</Amount>
+          <CurrencyCode>GBP</CurrencyCode>
+          <FormattedPrice>£4.99</FormattedPrice>
+        </ListPrice>
+        <Manufacturer>Usborne Publishing Ltd</Manufacturer>
+        <NumberOfPages>64</NumberOfPages>
+        <PackageDimensions>
+          <Height Units=\"hundredths-inches\">47</Height>
+          <Length Units=\"hundredths-inches\">787</Length>
+          <Weight Units=\"hundredths-pounds\">49</Weight>
+          <Width Units=\"hundredths-inches\">512</Width>
+        </PackageDimensions>
+        <ProductGroup>Book</ProductGroup>
+        <ProductTypeName>ABIS_BOOK</ProductTypeName>
+        <PublicationDate>2004-06-25</PublicationDate>
+        <Publisher>Usborne Publishing Ltd</Publisher>
+        <SKU>549780746063026</SKU>
+        <Studio>Usborne Publishing Ltd</Studio>
+        <Title>Around the World in Eighty Days (Young Reading (Series 2))</Title>
+      </ItemAttributes>
+    </Item>
+    <Item>
+      <ASIN>1853262870</ASIN>
+      <DetailPageURL>http://www.amazon.co.uk/Journey-Centre-Earth-Wordsworth-Classics/dp/1853262870%3FSubscriptionId%3DAKIAJOHMUMYIJ43O4DJQ%26tag%3Dmytag-20%26linkCode%3Dxm2%26camp%3D2025%26creative%3D165953%26creativeASIN%3D1853262870</DetailPageURL>
+      <ItemLinks>
+        <ItemLink>
+          <Description>Add To Wishlist</Description>
+          <URL>http://www.amazon.co.uk/gp/registry/wishlist/add-item.html%3Fasin.0%3D1853262870%26SubscriptionId%3DAKIAJOHMUMYIJ43O4DJQ%26tag%3Dmytag-20%26linkCode%3Dxm2%26camp%3D2025%26creative%3D12734%26creativeASIN%3D1853262870</URL>
+        </ItemLink>
+        <ItemLink>
+          <Description>Tell A Friend</Description>
+          <URL>http://www.amazon.co.uk/gp/pdp/taf/1853262870%3FSubscriptionId%3DAKIAJOHMUMYIJ43O4DJQ%26tag%3Dmytag-20%26linkCode%3Dxm2%26camp%3D2025%26creative%3D12734%26creativeASIN%3D1853262870</URL>
+        </ItemLink>
+        <ItemLink>
+          <Description>All Customer Reviews</Description>
+          <URL>http://www.amazon.co.uk/review/product/1853262870%3FSubscriptionId%3DAKIAJOHMUMYIJ43O4DJQ%26tag%3Dmytag-20%26linkCode%3Dxm2%26camp%3D2025%26creative%3D12734%26creativeASIN%3D1853262870</URL>
+        </ItemLink>
+        <ItemLink>
+          <Description>All Offers</Description>
+          <URL>http://www.amazon.co.uk/gp/offer-listing/1853262870%3FSubscriptionId%3DAKIAJOHMUMYIJ43O4DJQ%26tag%3Dmytag-20%26linkCode%3Dxm2%26camp%3D2025%26creative%3D12734%26creativeASIN%3D1853262870</URL>
+        </ItemLink>
+      </ItemLinks>
+      <SmallImage>
+        <URL>http://ecx.images-amazon.com/images/I/51md92KEc7L._SL75_.jpg</URL>
+        <Height Units=\"pixels\">75</Height>
+        <Width Units=\"pixels\">48</Width>
+      </SmallImage>
+      <MediumImage>
+        <URL>http://ecx.images-amazon.com/images/I/51md92KEc7L._SL160_.jpg</URL>
+        <Height Units=\"pixels\">160</Height>
+        <Width Units=\"pixels\">102</Width>
+      </MediumImage>
+      <LargeImage>
+        <URL>http://ecx.images-amazon.com/images/I/51md92KEc7L.jpg</URL>
+        <Height Units=\"pixels\">500</Height>
+        <Width Units=\"pixels\">320</Width>
+      </LargeImage>
+      <ImageSets>
+        <ImageSet Category=\"primary\">
+          <SwatchImage>
+            <URL>http://ecx.images-amazon.com/images/I/51md92KEc7L._SL30_.jpg</URL>
+            <Height Units=\"pixels\">30</Height>
+            <Width Units=\"pixels\">19</Width>
+          </SwatchImage>
+          <SmallImage>
+            <URL>http://ecx.images-amazon.com/images/I/51md92KEc7L._SL75_.jpg</URL>
+            <Height Units=\"pixels\">75</Height>
+            <Width Units=\"pixels\">48</Width>
+          </SmallImage>
+          <ThumbnailImage>
+            <URL>http://ecx.images-amazon.com/images/I/51md92KEc7L._SL75_.jpg</URL>
+            <Height Units=\"pixels\">75</Height>
+            <Width Units=\"pixels\">48</Width>
+          </ThumbnailImage>
+          <TinyImage>
+            <URL>http://ecx.images-amazon.com/images/I/51md92KEc7L._SL110_.jpg</URL>
+            <Height Units=\"pixels\">110</Height>
+            <Width Units=\"pixels\">70</Width>
+          </TinyImage>
+          <MediumImage>
+            <URL>http://ecx.images-amazon.com/images/I/51md92KEc7L._SL160_.jpg</URL>
+            <Height Units=\"pixels\">160</Height>
+            <Width Units=\"pixels\">102</Width>
+          </MediumImage>
+          <LargeImage>
+            <URL>http://ecx.images-amazon.com/images/I/51md92KEc7L.jpg</URL>
+            <Height Units=\"pixels\">500</Height>
+            <Width Units=\"pixels\">320</Width>
+          </LargeImage>
+        </ImageSet>
+      </ImageSets>
+      <ItemAttributes>
+        <Author>Jules Verne</Author>
+        <Binding>Paperback</Binding>
+        <CatalogNumberList>
+          <CatalogNumberListElement>AL11227906</CatalogNumberListElement>
+        </CatalogNumberList>
+        <EAN>9781853262876</EAN>
+        <EANList>
+          <EANListElement>9781853262876</EANListElement>
+        </EANList>
+        <Edition>New edition</Edition>
+        <ISBN>1853262870</ISBN>
+        <ItemDimensions>
+          <Height Units=\"hundredths-inches\">780</Height>
+          <Length Units=\"hundredths-inches\">508</Length>
+          <Weight Units=\"hundredths-pounds\">30</Weight>
+          <Width Units=\"hundredths-inches\">35</Width>
+        </ItemDimensions>
+        <Label>Wordsworth Editions Ltd</Label>
+        <Languages>
+          <Language>
+            <Name>English</Name>
+            <Type>Unknown</Type>
+          </Language>
+          <Language>
+            <Name>English</Name>
+            <Type>Original Language</Type>
+          </Language>
+          <Language>
+            <Name>English</Name>
+            <Type>Published</Type>
+          </Language>
+        </Languages>
+        <ListPrice>
+          <Amount>199</Amount>
+          <CurrencyCode>GBP</CurrencyCode>
+          <FormattedPrice>£1.99</FormattedPrice>
+        </ListPrice>
+        <Manufacturer>Wordsworth Editions Ltd</Manufacturer>
+        <NumberOfItems>1</NumberOfItems>
+        <NumberOfPages>208</NumberOfPages>
+        <PackageDimensions>
+          <Height Units=\"hundredths-inches\">50</Height>
+          <Length Units=\"hundredths-inches\">760</Length>
+          <Weight Units=\"hundredths-pounds\">30</Weight>
+          <Width Units=\"hundredths-inches\">490</Width>
+        </PackageDimensions>
+        <ProductGroup>Book</ProductGroup>
+        <ProductTypeName>ABIS_BOOK</ProductTypeName>
+        <PublicationDate>1996-02-01</PublicationDate>
+        <Publisher>Wordsworth Editions Ltd</Publisher>
+        <SKU>379781853262876</SKU>
+        <Studio>Wordsworth Editions Ltd</Studio>
+        <Title>Journey to the Centre of the Earth (Wordsworth Classics)</Title>
+      </ItemAttributes>
+    </Item>
+    <Item>
+      <ASIN>B0082YX5QM</ASIN>
+      <DetailPageURL>http://www.amazon.co.uk/In-the-Year-2889-ebook/dp/B0082YX5QM%3FSubscriptionId%3DAKIAJOHMUMYIJ43O4DJQ%26tag%3Dmytag-20%26linkCode%3Dxm2%26camp%3D2025%26creative%3D165953%26creativeASIN%3DB0082YX5QM</DetailPageURL>
+      <ItemLinks>
+        <ItemLink>
+          <Description>Add To Wishlist</Description>
+          <URL>http://www.amazon.co.uk/gp/registry/wishlist/add-item.html%3Fasin.0%3DB0082YX5QM%26SubscriptionId%3DAKIAJOHMUMYIJ43O4DJQ%26tag%3Dmytag-20%26linkCode%3Dxm2%26camp%3D2025%26creative%3D12734%26creativeASIN%3DB0082YX5QM</URL>
+        </ItemLink>
+        <ItemLink>
+          <Description>Tell A Friend</Description>
+          <URL>http://www.amazon.co.uk/gp/pdp/taf/B0082YX5QM%3FSubscriptionId%3DAKIAJOHMUMYIJ43O4DJQ%26tag%3Dmytag-20%26linkCode%3Dxm2%26camp%3D2025%26creative%3D12734%26creativeASIN%3DB0082YX5QM</URL>
+        </ItemLink>
+        <ItemLink>
+          <Description>All Customer Reviews</Description>
+          <URL>http://www.amazon.co.uk/review/product/B0082YX5QM%3FSubscriptionId%3DAKIAJOHMUMYIJ43O4DJQ%26tag%3Dmytag-20%26linkCode%3Dxm2%26camp%3D2025%26creative%3D12734%26creativeASIN%3DB0082YX5QM</URL>
+        </ItemLink>
+        <ItemLink>
+          <Description>All Offers</Description>
+          <URL>http://www.amazon.co.uk/gp/offer-listing/B0082YX5QM%3FSubscriptionId%3DAKIAJOHMUMYIJ43O4DJQ%26tag%3Dmytag-20%26linkCode%3Dxm2%26camp%3D2025%26creative%3D12734%26creativeASIN%3DB0082YX5QM</URL>
+        </ItemLink>
+      </ItemLinks>
+      <SmallImage>
+        <URL>http://ecx.images-amazon.com/images/I/41brlDHt9yL._SL75_.jpg</URL>
+        <Height Units=\"pixels\">75</Height>
+        <Width Units=\"pixels\">50</Width>
+      </SmallImage>
+      <MediumImage>
+        <URL>http://ecx.images-amazon.com/images/I/41brlDHt9yL._SL160_.jpg</URL>
+        <Height Units=\"pixels\">160</Height>
+        <Width Units=\"pixels\">107</Width>
+      </MediumImage>
+      <LargeImage>
+        <URL>http://ecx.images-amazon.com/images/I/41brlDHt9yL.jpg</URL>
+        <Height Units=\"pixels\">500</Height>
+        <Width Units=\"pixels\">333</Width>
+      </LargeImage>
+      <ImageSets>
+        <ImageSet Category=\"primary\">
+          <SwatchImage>
+            <URL>http://ecx.images-amazon.com/images/I/41brlDHt9yL._SL30_.jpg</URL>
+            <Height Units=\"pixels\">30</Height>
+            <Width Units=\"pixels\">20</Width>
+          </SwatchImage>
+          <SmallImage>
+            <URL>http://ecx.images-amazon.com/images/I/41brlDHt9yL._SL75_.jpg</URL>
+            <Height Units=\"pixels\">75</Height>
+            <Width Units=\"pixels\">50</Width>
+          </SmallImage>
+          <ThumbnailImage>
+            <URL>http://ecx.images-amazon.com/images/I/41brlDHt9yL._SL75_.jpg</URL>
+            <Height Units=\"pixels\">75</Height>
+            <Width Units=\"pixels\">50</Width>
+          </ThumbnailImage>
+          <TinyImage>
+            <URL>http://ecx.images-amazon.com/images/I/41brlDHt9yL._SL110_.jpg</URL>
+            <Height Units=\"pixels\">110</Height>
+            <Width Units=\"pixels\">73</Width>
+          </TinyImage>
+          <MediumImage>
+            <URL>http://ecx.images-amazon.com/images/I/41brlDHt9yL._SL160_.jpg</URL>
+            <Height Units=\"pixels\">160</Height>
+            <Width Units=\"pixels\">107</Width>
+          </MediumImage>
+          <LargeImage>
+            <URL>http://ecx.images-amazon.com/images/I/41brlDHt9yL.jpg</URL>
+            <Height Units=\"pixels\">500</Height>
+            <Width Units=\"pixels\">333</Width>
+          </LargeImage>
+        </ImageSet>
+      </ImageSets>
+      <ItemAttributes>
+        <Author>Jules Verne</Author>
+        <Author>Michel Verne</Author>
+        <Binding>Kindle Edition</Binding>
+        <Format>Kindle eBook</Format>
+        <IsAdultProduct>0</IsAdultProduct>
+        <Languages>
+          <Language>
+            <Name>English</Name>
+            <Type>Published</Type>
+          </Language>
+        </Languages>
+        <NumberOfItems>1</NumberOfItems>
+        <NumberOfPages>32</NumberOfPages>
+        <ProductGroup>eBooks</ProductGroup>
+        <ProductTypeName>ABIS_EBOOKS</ProductTypeName>
+        <PublicationDate>2012-05-12</PublicationDate>
+        <ReleaseDate>2012-05-12</ReleaseDate>
+        <Title>In the Year 2889</Title>
+      </ItemAttributes>
+    </Item>
+    <Item>
+      <ASIN>B00847H766</ASIN>
+      <DetailPageURL>http://www.amazon.co.uk/The-Blockade-Runners-ebook/dp/B00847H766%3FSubscriptionId%3DAKIAJOHMUMYIJ43O4DJQ%26tag%3Dmytag-20%26linkCode%3Dxm2%26camp%3D2025%26creative%3D165953%26creativeASIN%3DB00847H766</DetailPageURL>
+      <ItemLinks>
+        <ItemLink>
+          <Description>Add To Wishlist</Description>
+          <URL>http://www.amazon.co.uk/gp/registry/wishlist/add-item.html%3Fasin.0%3DB00847H766%26SubscriptionId%3DAKIAJOHMUMYIJ43O4DJQ%26tag%3Dmytag-20%26linkCode%3Dxm2%26camp%3D2025%26creative%3D12734%26creativeASIN%3DB00847H766</URL>
+        </ItemLink>
+        <ItemLink>
+          <Description>Tell A Friend</Description>
+          <URL>http://www.amazon.co.uk/gp/pdp/taf/B00847H766%3FSubscriptionId%3DAKIAJOHMUMYIJ43O4DJQ%26tag%3Dmytag-20%26linkCode%3Dxm2%26camp%3D2025%26creative%3D12734%26creativeASIN%3DB00847H766</URL>
+        </ItemLink>
+        <ItemLink>
+          <Description>All Customer Reviews</Description>
+          <URL>http://www.amazon.co.uk/review/product/B00847H766%3FSubscriptionId%3DAKIAJOHMUMYIJ43O4DJQ%26tag%3Dmytag-20%26linkCode%3Dxm2%26camp%3D2025%26creative%3D12734%26creativeASIN%3DB00847H766</URL>
+        </ItemLink>
+        <ItemLink>
+          <Description>All Offers</Description>
+          <URL>http://www.amazon.co.uk/gp/offer-listing/B00847H766%3FSubscriptionId%3DAKIAJOHMUMYIJ43O4DJQ%26tag%3Dmytag-20%26linkCode%3Dxm2%26camp%3D2025%26creative%3D12734%26creativeASIN%3DB00847H766</URL>
+        </ItemLink>
+      </ItemLinks>
+      <SmallImage>
+        <URL>http://ecx.images-amazon.com/images/I/51W7l-3kaUL._SL75_.jpg</URL>
+        <Height Units=\"pixels\">75</Height>
+        <Width Units=\"pixels\">50</Width>
+      </SmallImage>
+      <MediumImage>
+        <URL>http://ecx.images-amazon.com/images/I/51W7l-3kaUL._SL160_.jpg</URL>
+        <Height Units=\"pixels\">160</Height>
+        <Width Units=\"pixels\">107</Width>
+      </MediumImage>
+      <LargeImage>
+        <URL>http://ecx.images-amazon.com/images/I/51W7l-3kaUL.jpg</URL>
+        <Height Units=\"pixels\">500</Height>
+        <Width Units=\"pixels\">333</Width>
+      </LargeImage>
+      <ImageSets>
+        <ImageSet Category=\"primary\">
+          <SwatchImage>
+            <URL>http://ecx.images-amazon.com/images/I/51W7l-3kaUL._SL30_.jpg</URL>
+            <Height Units=\"pixels\">30</Height>
+            <Width Units=\"pixels\">20</Width>
+          </SwatchImage>
+          <SmallImage>
+            <URL>http://ecx.images-amazon.com/images/I/51W7l-3kaUL._SL75_.jpg</URL>
+            <Height Units=\"pixels\">75</Height>
+            <Width Units=\"pixels\">50</Width>
+          </SmallImage>
+          <ThumbnailImage>
+            <URL>http://ecx.images-amazon.com/images/I/51W7l-3kaUL._SL75_.jpg</URL>
+            <Height Units=\"pixels\">75</Height>
+            <Width Units=\"pixels\">50</Width>
+          </ThumbnailImage>
+          <TinyImage>
+            <URL>http://ecx.images-amazon.com/images/I/51W7l-3kaUL._SL110_.jpg</URL>
+            <Height Units=\"pixels\">110</Height>
+            <Width Units=\"pixels\">73</Width>
+          </TinyImage>
+          <MediumImage>
+            <URL>http://ecx.images-amazon.com/images/I/51W7l-3kaUL._SL160_.jpg</URL>
+            <Height Units=\"pixels\">160</Height>
+            <Width Units=\"pixels\">107</Width>
+          </MediumImage>
+          <LargeImage>
+            <URL>http://ecx.images-amazon.com/images/I/51W7l-3kaUL.jpg</URL>
+            <Height Units=\"pixels\">500</Height>
+            <Width Units=\"pixels\">333</Width>
+          </LargeImage>
+        </ImageSet>
+      </ImageSets>
+      <ItemAttributes>
+        <Author>Jules Verne</Author>
+        <Binding>Kindle Edition</Binding>
+        <Creator Role=\"Translator\">N. D'Anvers</Creator>
+        <Format>Kindle eBook</Format>
+        <IsAdultProduct>0</IsAdultProduct>
+        <Languages>
+          <Language>
+            <Name>English</Name>
+            <Type>Published</Type>
+          </Language>
+        </Languages>
+        <NumberOfItems>1</NumberOfItems>
+        <NumberOfPages>54</NumberOfPages>
+        <ProductGroup>eBooks</ProductGroup>
+        <ProductTypeName>ABIS_EBOOKS</ProductTypeName>
+        <PublicationDate>2012-05-16</PublicationDate>
+        <ReleaseDate>2012-05-16</ReleaseDate>
+        <Title>The Blockade Runners</Title>
+      </ItemAttributes>
+    </Item>
+    <Item>
+      <ASIN>1840226242</ASIN>
+      <DetailPageURL>http://www.amazon.co.uk/The-Mysterious-Island-Wordsworth-Classics/dp/1840226242%3FSubscriptionId%3DAKIAJOHMUMYIJ43O4DJQ%26tag%3Dmytag-20%26linkCode%3Dxm2%26camp%3D2025%26creative%3D165953%26creativeASIN%3D1840226242</DetailPageURL>
+      <ItemLinks>
+        <ItemLink>
+          <Description>Add To Wishlist</Description>
+          <URL>http://www.amazon.co.uk/gp/registry/wishlist/add-item.html%3Fasin.0%3D1840226242%26SubscriptionId%3DAKIAJOHMUMYIJ43O4DJQ%26tag%3Dmytag-20%26linkCode%3Dxm2%26camp%3D2025%26creative%3D12734%26creativeASIN%3D1840226242</URL>
+        </ItemLink>
+        <ItemLink>
+          <Description>Tell A Friend</Description>
+          <URL>http://www.amazon.co.uk/gp/pdp/taf/1840226242%3FSubscriptionId%3DAKIAJOHMUMYIJ43O4DJQ%26tag%3Dmytag-20%26linkCode%3Dxm2%26camp%3D2025%26creative%3D12734%26creativeASIN%3D1840226242</URL>
+        </ItemLink>
+        <ItemLink>
+          <Description>All Customer Reviews</Description>
+          <URL>http://www.amazon.co.uk/review/product/1840226242%3FSubscriptionId%3DAKIAJOHMUMYIJ43O4DJQ%26tag%3Dmytag-20%26linkCode%3Dxm2%26camp%3D2025%26creative%3D12734%26creativeASIN%3D1840226242</URL>
+        </ItemLink>
+        <ItemLink>
+          <Description>All Offers</Description>
+          <URL>http://www.amazon.co.uk/gp/offer-listing/1840226242%3FSubscriptionId%3DAKIAJOHMUMYIJ43O4DJQ%26tag%3Dmytag-20%26linkCode%3Dxm2%26camp%3D2025%26creative%3D12734%26creativeASIN%3D1840226242</URL>
+        </ItemLink>
+      </ItemLinks>
+      <SmallImage>
+        <URL>http://ecx.images-amazon.com/images/I/51yhdCWourL._SL75_.jpg</URL>
+        <Height Units=\"pixels\">75</Height>
+        <Width Units=\"pixels\">47</Width>
+      </SmallImage>
+      <MediumImage>
+        <URL>http://ecx.images-amazon.com/images/I/51yhdCWourL._SL160_.jpg</URL>
+        <Height Units=\"pixels\">160</Height>
+        <Width Units=\"pixels\">100</Width>
+      </MediumImage>
+      <LargeImage>
+        <URL>http://ecx.images-amazon.com/images/I/51yhdCWourL.jpg</URL>
+        <Height Units=\"pixels\">500</Height>
+        <Width Units=\"pixels\">314</Width>
+      </LargeImage>
+      <ImageSets>
+        <ImageSet Category=\"primary\">
+          <SwatchImage>
+            <URL>http://ecx.images-amazon.com/images/I/51yhdCWourL._SL30_.jpg</URL>
+            <Height Units=\"pixels\">30</Height>
+            <Width Units=\"pixels\">19</Width>
+          </SwatchImage>
+          <SmallImage>
+            <URL>http://ecx.images-amazon.com/images/I/51yhdCWourL._SL75_.jpg</URL>
+            <Height Units=\"pixels\">75</Height>
+            <Width Units=\"pixels\">47</Width>
+          </SmallImage>
+          <ThumbnailImage>
+            <URL>http://ecx.images-amazon.com/images/I/51yhdCWourL._SL75_.jpg</URL>
+            <Height Units=\"pixels\">75</Height>
+            <Width Units=\"pixels\">47</Width>
+          </ThumbnailImage>
+          <TinyImage>
+            <URL>http://ecx.images-amazon.com/images/I/51yhdCWourL._SL110_.jpg</URL>
+            <Height Units=\"pixels\">110</Height>
+            <Width Units=\"pixels\">69</Width>
+          </TinyImage>
+          <MediumImage>
+            <URL>http://ecx.images-amazon.com/images/I/51yhdCWourL._SL160_.jpg</URL>
+            <Height Units=\"pixels\">160</Height>
+            <Width Units=\"pixels\">100</Width>
+          </MediumImage>
+          <LargeImage>
+            <URL>http://ecx.images-amazon.com/images/I/51yhdCWourL.jpg</URL>
+            <Height Units=\"pixels\">500</Height>
+            <Width Units=\"pixels\">314</Width>
+          </LargeImage>
+        </ImageSet>
+      </ImageSets>
+      <ItemAttributes>
+        <Author>Jules Verne</Author>
+        <Binding>Paperback</Binding>
+        <EAN>9781840226249</EAN>
+        <EANList>
+          <EANListElement>9781840226249</EANListElement>
+        </EANList>
+        <ISBN>1840226242</ISBN>
+        <ItemDimensions>
+          <Height Units=\"hundredths-inches\">780</Height>
+          <Length Units=\"hundredths-inches\">508</Length>
+          <Weight Units=\"hundredths-pounds\">75</Weight>
+          <Width Units=\"hundredths-inches\">106</Width>
+        </ItemDimensions>
+        <Label>Wordsworth Editions Ltd.</Label>
+        <Languages>
+          <Language>
+            <Name>English</Name>
+            <Type>Unknown</Type>
+          </Language>
+          <Language>
+            <Name>English</Name>
+            <Type>Original Language</Type>
+          </Language>
+          <Language>
+            <Name>English</Name>
+            <Type>Published</Type>
+          </Language>
+        </Languages>
+        <ListPrice>
+          <Amount>199</Amount>
+          <CurrencyCode>GBP</CurrencyCode>
+          <FormattedPrice>£1.99</FormattedPrice>
+        </ListPrice>
+        <Manufacturer>Wordsworth Editions Ltd.</Manufacturer>
+        <NumberOfItems>1</NumberOfItems>
+        <NumberOfPages>528</NumberOfPages>
+        <PackageDimensions>
+          <Height Units=\"hundredths-inches\">118</Height>
+          <Length Units=\"hundredths-inches\">764</Length>
+          <Weight Units=\"hundredths-pounds\">75</Weight>
+          <Width Units=\"hundredths-inches\">496</Width>
+        </PackageDimensions>
+        <ProductGroup>Book</ProductGroup>
+        <ProductTypeName>ABIS_BOOK</ProductTypeName>
+        <PublicationDate>2010-03-15</PublicationDate>
+        <Publisher>Wordsworth Editions Ltd.</Publisher>
+        <SKU>ACOUK_book_new_1840226242</SKU>
+        <Studio>Wordsworth Editions Ltd.</Studio>
+        <Title>The Mysterious Island (Wordsworth Classics)</Title>
+      </ItemAttributes>
+    </Item>
+    <Item>
+      <ASIN>1853260312</ASIN>
+      <DetailPageURL>http://www.amazon.co.uk/Twenty-Thousand-Leagues-Wordsworth-Classics/dp/1853260312%3FSubscriptionId%3DAKIAJOHMUMYIJ43O4DJQ%26tag%3Dmytag-20%26linkCode%3Dxm2%26camp%3D2025%26creative%3D165953%26creativeASIN%3D1853260312</DetailPageURL>
+      <ItemLinks>
+        <ItemLink>
+          <Description>Add To Wishlist</Description>
+          <URL>http://www.amazon.co.uk/gp/registry/wishlist/add-item.html%3Fasin.0%3D1853260312%26SubscriptionId%3DAKIAJOHMUMYIJ43O4DJQ%26tag%3Dmytag-20%26linkCode%3Dxm2%26camp%3D2025%26creative%3D12734%26creativeASIN%3D1853260312</URL>
+        </ItemLink>
+        <ItemLink>
+          <Description>Tell A Friend</Description>
+          <URL>http://www.amazon.co.uk/gp/pdp/taf/1853260312%3FSubscriptionId%3DAKIAJOHMUMYIJ43O4DJQ%26tag%3Dmytag-20%26linkCode%3Dxm2%26camp%3D2025%26creative%3D12734%26creativeASIN%3D1853260312</URL>
+        </ItemLink>
+        <ItemLink>
+          <Description>All Customer Reviews</Description>
+          <URL>http://www.amazon.co.uk/review/product/1853260312%3FSubscriptionId%3DAKIAJOHMUMYIJ43O4DJQ%26tag%3Dmytag-20%26linkCode%3Dxm2%26camp%3D2025%26creative%3D12734%26creativeASIN%3D1853260312</URL>
+        </ItemLink>
+        <ItemLink>
+          <Description>All Offers</Description>
+          <URL>http://www.amazon.co.uk/gp/offer-listing/1853260312%3FSubscriptionId%3DAKIAJOHMUMYIJ43O4DJQ%26tag%3Dmytag-20%26linkCode%3Dxm2%26camp%3D2025%26creative%3D12734%26creativeASIN%3D1853260312</URL>
+        </ItemLink>
+      </ItemLinks>
+      <SmallImage>
+        <URL>http://ecx.images-amazon.com/images/I/51opeA%2B5mrL._SL75_.jpg</URL>
+        <Height Units=\"pixels\">75</Height>
+        <Width Units=\"pixels\">48</Width>
+      </SmallImage>
+      <MediumImage>
+        <URL>http://ecx.images-amazon.com/images/I/51opeA%2B5mrL._SL160_.jpg</URL>
+        <Height Units=\"pixels\">160</Height>
+        <Width Units=\"pixels\">102</Width>
+      </MediumImage>
+      <LargeImage>
+        <URL>http://ecx.images-amazon.com/images/I/51opeA%2B5mrL.jpg</URL>
+        <Height Units=\"pixels\">500</Height>
+        <Width Units=\"pixels\">320</Width>
+      </LargeImage>
+      <ImageSets>
+        <ImageSet Category=\"primary\">
+          <SwatchImage>
+            <URL>http://ecx.images-amazon.com/images/I/51opeA%2B5mrL._SL30_.jpg</URL>
+            <Height Units=\"pixels\">30</Height>
+            <Width Units=\"pixels\">19</Width>
+          </SwatchImage>
+          <SmallImage>
+            <URL>http://ecx.images-amazon.com/images/I/51opeA%2B5mrL._SL75_.jpg</URL>
+            <Height Units=\"pixels\">75</Height>
+            <Width Units=\"pixels\">48</Width>
+          </SmallImage>
+          <ThumbnailImage>
+            <URL>http://ecx.images-amazon.com/images/I/51opeA%2B5mrL._SL75_.jpg</URL>
+            <Height Units=\"pixels\">75</Height>
+            <Width Units=\"pixels\">48</Width>
+          </ThumbnailImage>
+          <TinyImage>
+            <URL>http://ecx.images-amazon.com/images/I/51opeA%2B5mrL._SL110_.jpg</URL>
+            <Height Units=\"pixels\">110</Height>
+            <Width Units=\"pixels\">70</Width>
+          </TinyImage>
+          <MediumImage>
+            <URL>http://ecx.images-amazon.com/images/I/51opeA%2B5mrL._SL160_.jpg</URL>
+            <Height Units=\"pixels\">160</Height>
+            <Width Units=\"pixels\">102</Width>
+          </MediumImage>
+          <LargeImage>
+            <URL>http://ecx.images-amazon.com/images/I/51opeA%2B5mrL.jpg</URL>
+            <Height Units=\"pixels\">500</Height>
+            <Width Units=\"pixels\">320</Width>
+          </LargeImage>
+        </ImageSet>
+      </ImageSets>
+      <ItemAttributes>
+        <Author>Jules Verne</Author>
+        <Binding>Paperback</Binding>
+        <EAN>9781853260315</EAN>
+        <EANList>
+          <EANListElement>9781853260315</EANListElement>
+        </EANList>
+        <Edition>Paperback</Edition>
+        <ISBN>1853260312</ISBN>
+        <ItemDimensions>
+          <Height Units=\"hundredths-inches\">780</Height>
+          <Length Units=\"hundredths-inches\">508</Length>
+          <Weight Units=\"hundredths-pounds\">35</Weight>
+          <Width Units=\"hundredths-inches\">51</Width>
+        </ItemDimensions>
+        <Label>Wordsworth Editions Ltd</Label>
+        <Languages>
+          <Language>
+            <Name>English</Name>
+            <Type>Unknown</Type>
+          </Language>
+          <Language>
+            <Name>English</Name>
+            <Type>Original Language</Type>
+          </Language>
+          <Language>
+            <Name>English</Name>
+            <Type>Published</Type>
+          </Language>
+        </Languages>
+        <ListPrice>
+          <Amount>199</Amount>
+          <CurrencyCode>GBP</CurrencyCode>
+          <FormattedPrice>£1.99</FormattedPrice>
+        </ListPrice>
+        <Manufacturer>Wordsworth Editions Ltd</Manufacturer>
+        <NumberOfItems>1</NumberOfItems>
+        <NumberOfPages>256</NumberOfPages>
+        <PackageDimensions>
+          <Height Units=\"hundredths-inches\">71</Height>
+          <Length Units=\"hundredths-inches\">772</Length>
+          <Weight Units=\"hundredths-pounds\">40</Weight>
+          <Width Units=\"hundredths-inches\">496</Width>
+        </PackageDimensions>
+        <ProductGroup>Book</ProductGroup>
+        <ProductTypeName>ABIS_BOOK</ProductTypeName>
+        <PublicationDate>1992-05-01</PublicationDate>
+        <Publisher>Wordsworth Editions Ltd</Publisher>
+        <SKU>ACOMMP2_book_usedgood_1853260312</SKU>
+        <Studio>Wordsworth Editions Ltd</Studio>
+        <Title>Twenty Thousand Leagues Under the Sea (Wordsworth Classics)</Title>
+      </ItemAttributes>
+    </Item>
+  </Items>
+</ItemSearchResponse>"

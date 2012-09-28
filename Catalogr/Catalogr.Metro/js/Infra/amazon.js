@@ -220,6 +220,35 @@ define(["External/jsSha2/sha2"], function() {
             this.width = node.getElementsByTagName("Width")[0].innerText;
             this.height = node.getElementsByTagName("Height")[0].innerText;
         }
+
+        function Item(node) {
+            this.author;
+            this.numberOfPages;
+            this.title = node.getElementsByTagName("Title")[0].innerText;
+            this.publisher;
+            this.EAN;
+            this.ISBN;
+            this.ASIN;
+            this.providerUrl;
+            this.publicationDate;
+            this.images;
+        }
+
+        function Response(node) {
+            function getItems(node) {
+                var itemNodes = node.getElementsByTagName("Item");
+                var items = itemNodes.map(function (itemNode) {
+                    return new Item(itemNode);
+                });
+
+                return items;
+            }
+
+            this.items = getItems(node);
+            this.moreResultsUrl = node.getElementsByTagName("MoreSearchResultsUrl")[0].innerText;
+            this.totalResults = node.getElementsByTagName("TotalResults")[0].innerText;
+            this.totalPages = node.getElementsByTagName("TotalPages")[0].innerText;
+        }
             
         function Images(options) {
             return {
@@ -242,6 +271,15 @@ define(["External/jsSha2/sha2"], function() {
             
 
         function getDetails(params) {
+            function getItems(xmlDoc) {
+                var itemNodes = xmlDoc.getElementsByTagName("Item");
+                var items = itemNodes.map(function (itemNode) {
+                    return new Item(itemNode);
+                });
+
+                return items;
+            }
+
             function getImages(xmlDoc) {
                 var medium = xmlDoc.getElementsByTagName("MediumImage");
                 var large = xmlDoc.getElementsByTagName("LargeImage");
@@ -281,7 +319,7 @@ define(["External/jsSha2/sha2"], function() {
                         var doc = new Windows.Data.Xml.Dom.XmlDocument();
                         doc.loadXml(xml, loadSettings);
 
-                            
+                        //var i = new Response(doc);
                                 
                         comp(new Images(getImages(doc)));
                     },
