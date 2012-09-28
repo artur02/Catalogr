@@ -31,14 +31,17 @@
                 </h1>
             </header>
             <section aria-label="Main content" role="main">
-                <div id="list" class="groupeditemslist win-selectionstylefilled" aria-label="List of groups" data-win-control="WinJS.UI.ListView" data-win-options="{ selectionMode: 'none' }"></div>
+                <div id="list" class="groupeditemslist win-selectionstylefilled" aria-label="List of groups" 
+                    data-win-control="WinJS.UI.ListView" 
+                    data-win-options="{ selectionMode: WinJS.UI.SelectionMode.single }"></div>
             </section>
         </div>
 
         
         <div id="createAppBar" data-win-control="WinJS.UI.AppBar" data-win-options="">
-            <button data-win-control="WinJS.UI.AppBarCommand" data-win-options="{ id: 'cmdAdd', label: 'Add', icon: 'add', section: 'global', tooltip: 'Add new book' }">
-            </button>
+            <button data-win-control="WinJS.UI.AppBarCommand" data-win-options="{ id: 'cmdAdd', label: 'Add', icon: 'add', section: 'global', tooltip: 'Add new book' }"></button>
+            <button data-win-control="WinJS.UI.AppBarCommand" data-win-options="{ id: 'cmdRemove', label: 'Remove', icon: 'delete', section: 'global', tooltip: 'Remove selected book', disabled: true }"></button>
+            <button data-win-control="WinJS.UI.AppBarCommand" data-win-options="{ id: 'cmdClearDB', label: 'Clear', icon: 'clear', section: 'debug', tooltip: 'Debug - Clear books' }"></button>
         </div>
     </body>
 </html>

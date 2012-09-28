@@ -75,6 +75,23 @@
         nav.navigate("/pages/groupDetail/groupDetail.html", { groupKey: key });
     }
 
+    function bookSelectionChanged() {
+        var list = document.getElementById('list');
+        var selection = list.winControl.selection;
+
+        var cmdRemove = document.getElementById('cmdRemove');
+        var appBar = document.getElementById('createAppBar');
+
+        if (selection.count() > 0) {
+            cmdRemove.winControl.disabled = false;
+            appBar.winControl.sticky = true;
+            appBar.winControl.show();
+        } else {
+            cmdRemove.winControl.disabled = true;
+            appBar.winControl.sticky = false;
+        };
+    };
+
     ui.Pages.define("/pages/groupedItems/authorGroups.html", {
         // Navigates to the groupHeaderPage. Called from the groupHeaders,
         // keyboard shortcut and iteminvoked.
@@ -90,6 +107,8 @@
                         var listView = document.getElementById('list').winControl;
                         listView.groupHeaderTemplate = headerTemplateBuilder;
                         listView.itemTemplate = itemTemplateBuilder;
+                        listView.addEventListener("selectionchanged", bookSelectionChanged);
+
                         
                         initializeLayout(listView, appView.value);
                         listView.element.focus();
