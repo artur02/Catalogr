@@ -3,7 +3,6 @@
 define(["config", "Infra/logger"], function (config, logger) {
     "use strict";
 
-    var newCreate = false;
     var db;
 
     var objectStores = Object.create({}, {
@@ -44,6 +43,15 @@ define(["config", "Infra/logger"], function (config, logger) {
     // Whenever an IndexedDB is created, the version is set to "", 
     // but can be immediately upgraded by calling createDB. 
     function dbVersionUpgrade(evt) {
+        function createBookSchema() {
+            var bookStore = db.createObjectStore(objectStores.books, { keyPath: "id", autoIncrement: true });
+            bookStore.createIndex("title", "title", { unique: false });
+        }
+
+        function createAuthorSchema() {
+            db.createObjectStore(objectStores.authors, { keyPath: "id" });
+        }
+
         return new WinJS.Promise(function (comp, err) {
 
             // If the database was previously loaded, close it. 
@@ -53,22 +61,14 @@ define(["config", "Infra/logger"], function (config, logger) {
             }
             db = evt.target.result;
 
-            // Get the version update transaction handle, 
-            //since we want to create the schema as part of the same transaction.
             var txn = evt.target.transaction;
 
-            // Create the books object store, with an index on the book title.
-            // Note that we set the returned object store to a variable
-            // in order to make further calls (index creation) on that object store.
-            var bookStore = db.createObjectStore(objectStores.books, { keyPath: "id", autoIncrement: true });
-            bookStore.createIndex("title", "title", { unique: false });
+            createBookSchema();
+            createAuthorSchema();
 
-            // Create the authors object store.
-            db.createObjectStore(objectStores.authors, { keyPath: "id" });
 
             // Once the creation of the object stores is finished (they are created asynchronously), log success.
-            txn.oncomplete = function () { logger.info("Database schema created.", "sample", "status"); };
-            newCreate = true;
+            txn.oncomplete = function () { logger.info("Database schema created."); };
 
             comp();
         });
@@ -115,7 +115,6 @@ define(["config", "Infra/logger"], function (config, logger) {
                     logger.error("Database create blocked.");
                     err();
                 };
-                newCreate = false;
             } catch (e) {
                 err(e);
             }
