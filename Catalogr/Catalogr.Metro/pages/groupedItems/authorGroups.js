@@ -92,6 +92,20 @@
         };
     };
 
+    function deleteBooks() {
+        var list = document.getElementById('list');
+        var selection = list.winControl.selection;
+
+        selection.getItems().done(function (items) {
+            require(['Infra/database'], function (db) {
+                var books = items.map(function(item){
+                    return item.data;
+                });
+                db.books.del(books);
+            });
+        });
+    };
+
     ui.Pages.define("/pages/groupedItems/authorGroups.html", {
         // Navigates to the groupHeaderPage. Called from the groupHeaders,
         // keyboard shortcut and iteminvoked.
@@ -122,6 +136,10 @@
                                 e.stopImmediatePropagation();
                             }
                         }, true);
+
+                        var removeCommand = document.getElementById('cmdRemove');
+                        removeCommand.addEventListener("click", deleteBooks);
+
 
                     }, function(err) {
                         debugger;

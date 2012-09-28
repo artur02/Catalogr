@@ -77,6 +77,7 @@ define(["data"], function (data) {
             var sampleItems = [];
             books.forEach(function(book) {
                 var item = {
+                    id: book.id,
                     group: sampleGroups[book.authorid],
                     title: book.title,
                     subtitle: "Item Subtitle: 1",

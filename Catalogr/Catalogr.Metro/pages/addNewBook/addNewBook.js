@@ -36,7 +36,7 @@
 
 
             require(['/js/Infra/database.js'], function (database) {
-                database.addBooks([{
+                database.books.add([{
                     title: title.value,
                     authorid: author.value
                 }]);
