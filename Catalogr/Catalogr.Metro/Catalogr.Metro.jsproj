@@ -84,6 +84,9 @@
     <Content Include="js\Infra\database.js" />
     <Content Include="js\Infra\emberExtensions.js" />
     <Content Include="js\Infra\logger.js" />
+    <Content Include="js\Infra\repo.js" />
+    <Content Include="js\Infra\repositories\authors.js" />
+    <Content Include="js\Infra\repositories\books.js" />
     <Content Include="js\Infra\templateLoader.js" />
     <Content Include="js\navigator.js" />
     <Content Include="js\sampleData.js" />

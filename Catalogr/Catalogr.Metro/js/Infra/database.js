@@ -6,16 +6,40 @@ define(["config", "Infra/logger"], function (config, logger) {
     var newCreate = false;
     var db;
 
-    var objectStores = {
-        books: "books",
-        authors: "authors"
-    };
+    var objectStores = Object.create({}, {
+        books: {
+            value: "books",
+            writable: false,
+            enumerable: true
+        },
+        authors: {
+            value: "authors",
+            writable: false,
+            enumerable: true
+        }
+    });
 
-    var transactionMode = {
-        readonly: "readonly",
-        readwrite: "readwrite",
-        versionchange: "versionchange"
-    };
+    var transactionMode = Object.create({}, {
+        readonly: {
+            value: "readonly",
+            writable: false,
+            enumerable: true
+        },
+        readwrite: {
+            value: "readwrite",
+            writable: false,
+            enumerable: true
+        },
+        versionchange: {
+            value: "versionchange",
+            writable: false,
+            enumerable: true
+        }
+    });
+
+    function getTransaction(stores, mode) {
+            return db.transaction(stores, mode);
+    }
     
     // Whenever an IndexedDB is created, the version is set to "", 
     // but can be immediately upgraded by calling createDB. 
@@ -168,168 +192,14 @@ define(["config", "Infra/logger"], function (config, logger) {
 
     
 
-   
-    
-    
-    function BookRepository() {
-        function add(books) {
-            return new WinJS.Promise(function (comp, err) {
-                open().then(function () {
-                    var txn = db.transaction([objectStores.books], transactionMode.readwrite);
-                    txn.oncomplete = function () {
-                        logger.info("Database populated.", "sample", "status");
-                        comp();
-                    };
-                    txn.onerror = function () {
-                        logger.error("Unable to populate database or database already populated.");
-                        err("Unable to populate database or database already populated");
-                    };
-                    txn.onabort = function () {
-                        logger.error("Unable to populate database or database already populated.");
-                        err("Unable to populate database or database already populated");
-                    };
-
-                    var booksStore = txn.objectStore(objectStores.books);
-
-                    // Write books to IndexedDB table.
-                    books.forEach(function (book) {
-                        try {
-                            var errorHandler = function () {
-                                logger.error("Failed to add book: " + this + ".");
-                            };
-
-                            addBook(booksStore, book, errorHandler.bind(book));
-                        } catch (error) {
-                            logger.error(error.message);
-                        }
-                    });
-                });
-            });
-
-            
-        }
-
-
-
-        function addBook(store, item, error) {
-            var addResult = store.add(item);
-            addResult.author = item.name;
-            addResult.onerror = error;
-        };
-
-        function del(books) {
-            return new WinJS.Promise(function (comp, err) {
-                open().then(function () {
-                    var txn = db.transaction([objectStores.books], transactionMode.readwrite);
-                    txn.oncomplete = function () {
-                        logger.info("Failed deleting book.");
-                        comp();
-                    };
-
-                    var booksStore = txn.objectStore(objectStores.books);
-
-                    books.forEach(function (book) {
-                        try {
-                            deleteBook(booksStore, book);
-                        } catch (error) {
-                            logger.error(error.message);
-                        }
-                    });
-                });
-            });
-        }
-
-        function deleteBook(store, item, error) {
-             store.delete(item.id);
-        }
-
-        return {
-            add: add,
-            del: del
-        };
-    }
-
-    function AuthorRepository() {
-        function add(authors) {
-            return new WinJS.Promise(function (comp, err) {
-
-                var txn = db.transaction([objectStores.authors], transactionMode.readwrite);
-                txn.oncomplete = function () {
-                    logger.log("Database populated.", "sample", "status");
-                    comp();
-                };
-                txn.onerror = function () {
-                    logger.error("Unable to populate database or database already populated.");
-                    err("Unable to populate database or database already populated");
-                };
-                txn.onabort = function () {
-                    logger.error("Unable to populate database or database already populated.");
-                    err("Unable to populate database or database already populated");
-                };
-
-                var authorsStore = txn.objectStore(objectStores.authors);
-
-                // Write authors to IndexedDB table.
-                authors.forEach(function (author) {
-                    try {
-                        var errorHandler = function () {
-                            logger.error("Failed to add author: " + this + ".");
-                        };
-
-                        addAuthor(authorsStore, author, errorHandler.bind(author));
-                    } catch (error) {
-                        logger.error(error.message);
-                    }
-                });
-            });
-        }
-
-        function addAuthor(store, item, error) {
-            var addResult = store.add(item);
-            addResult.author = item.name;
-            addResult.onerror = error;
-        };
-
-        function del(authors) {
-            return new WinJS.Promise(function (comp, err) {
-                open().then(function () {
-                    var txn = db.transaction([objectStores.authors], transactionMode.readwrite);
-                    txn.oncomplete = function () {
-                        logger.info("Failed deleting author.");
-                        comp();
-                    };
-
-                    var authorsStore = txn.objectStore(objectStores.authors);
-
-                    authors.forEach(function (author) {
-                        try {
-                            deleteAuthor(authorsStore, author);
-                        } catch (error) {
-                            logger.error(error.message);
-                        }
-                    });
-                });
-            });
-        }
-
-        function deleteAuthor(store, item, error) {
-            store.delete(item.id);
-        }
-
-        return {
-            add: add,
-            del: del
-        };
-    };
-
     return {
         create: open,
         open: open,
         read: read,
+        getTransaction: getTransaction,
 
-
-        authors: new AuthorRepository(),
-        books: new BookRepository()
+        STORE: objectStores,
+        MODE: transactionMode
     };
 
 });

@@ -1,4 +1,4 @@
-﻿define(["config", "Infra/logger", "Infra/database"], function(config, logger, database) {
+﻿define(["config", "Infra/logger", "Infra/database", "Infra/repo"], function(config, logger, database, repo) {
     "use strict";
 
     function loadData(evt) {
@@ -44,9 +44,9 @@
                             authors.push(author);
                         }
 
-                        database.books.add(books).then(function () {
+                        repo.books.add(books).then(function () {
                             logger.info("Sample data - books stored");
-                            return database.authors.add(authors);
+                            return repo.authors.add(authors);
                         }).done(function () {
                                 logger.info("Sample data - authors stored");
                             },
