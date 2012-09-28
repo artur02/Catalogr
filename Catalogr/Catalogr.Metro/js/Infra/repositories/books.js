@@ -47,14 +47,14 @@
 
         function del(books) {
             return new WinJS.Promise(function (comp, err) {
-                open().then(function () {
-                    var txn = db.transaction([objectStores.books], transactionMode.readwrite);
+                db.open().then(function () {
+                    var txn = db.getTransaction([db.STORE.books], db.MODE.readwrite);
                     txn.oncomplete = function () {
                         logger.info("Failed deleting book.");
                         comp();
                     };
 
-                    var booksStore = txn.objectStore(objectStores.books);
+                    var booksStore = txn.objectStore(db.STORE.books);
 
                     books.forEach(function (book) {
                         try {

@@ -123,6 +123,10 @@ define(["config", "Infra/logger"], function (config, logger) {
     }
  
     function deleteDb(dbName) {
+        if (!dbName) {
+            dbName = config.db.name;
+        }
+
         window.indexedDB.deleteDatabase(dbName);
     }
 
@@ -197,6 +201,7 @@ define(["config", "Infra/logger"], function (config, logger) {
         open: open,
         read: read,
         getTransaction: getTransaction,
+        clear: deleteDb,
 
         STORE: objectStores,
         MODE: transactionMode

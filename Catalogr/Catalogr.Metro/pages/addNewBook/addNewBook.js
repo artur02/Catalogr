@@ -35,8 +35,8 @@
             var title = document.getElementById("title");
 
 
-            require(['/js/Infra/database.js'], function (database) {
-                database.books.add([{
+            require(['Infra/repo'], function (repo) {
+                repo.books.add([{
                     title: title.value,
                     authorid: author.value
                 }]);

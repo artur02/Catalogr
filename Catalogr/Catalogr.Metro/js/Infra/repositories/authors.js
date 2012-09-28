@@ -3,7 +3,7 @@
         function add(authors) {
             return new WinJS.Promise(function (comp, err) {
 
-                var txn = db.transaction([objectStores.authors], transactionMode.readwrite);
+                var txn = db.getTransaction([db.STORE.authors], db.MODE.readwrite);
                 txn.oncomplete = function () {
                     logger.log("Database populated.", "sample", "status");
                     comp();
@@ -17,7 +17,7 @@
                     err("Unable to populate database or database already populated");
                 };
 
-                var authorsStore = txn.objectStore(objectStores.authors);
+                var authorsStore = txn.objectStore(db.STORE.authors);
 
                 // Write authors to IndexedDB table.
                 authors.forEach(function (author) {
@@ -42,14 +42,14 @@
 
         function del(authors) {
             return new WinJS.Promise(function (comp, err) {
-                open().then(function () {
-                    var txn = db.transaction([objectStores.authors], transactionMode.readwrite);
+                db.open().then(function () {
+                    var txn = db.getTransaction([db.STORE.authors], db.MODE.readwrite);
                     txn.oncomplete = function () {
                         logger.info("Failed deleting author.");
                         comp();
                     };
 
-                    var authorsStore = txn.objectStore(objectStores.authors);
+                    var authorsStore = txn.objectStore(db.STORE.authors);
 
                     authors.forEach(function (author) {
                         try {

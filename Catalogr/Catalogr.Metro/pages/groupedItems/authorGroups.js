@@ -97,12 +97,18 @@
         var selection = list.winControl.selection;
 
         selection.getItems().done(function (items) {
-            require(['Infra/database'], function (db) {
+            require(['Infra/repo'], function (repo) {
                 var books = items.map(function(item){
                     return item.data;
                 });
-                db.books.del(books);
+                repo.books.del(books);
             });
+        });
+    };
+
+    function clearDbHandler() {
+        require(['Infra/database'], function (db) {
+            db.clear();
         });
     };
 
@@ -140,6 +146,8 @@
                         var removeCommand = document.getElementById('cmdRemove');
                         removeCommand.addEventListener("click", deleteBooks);
 
+                        var clearCommand = document.getElementById('cmdClearDB');
+                        clearCommand.addEventListener("click", clearDbHandler);
 
                     }, function(err) {
                         debugger;
