@@ -93,23 +93,41 @@
     };
 
     function deleteBooks() {
+        
+
         var list = document.getElementById('list');
         var selection = list.winControl.selection;
 
-        selection.getItems().done(function (items) {
-            require(['Infra/repo'], function (repo) {
-                var books = items.map(function(item){
-                    return item.data;
+        var dlg = new Windows.UI.Popups.MessageDialog("Are you sure you want to delete the selected books?", "Delete books");
+
+        // Delete
+        dlg.commands.append(new Windows.UI.Popups.UICommand("Delete", function () {
+            selection.getItems().done(function (items) {
+                require(['Infra/repo'], function (repo) {
+                    var books = items.map(function (item) {
+                        return item.data;
+                    });
+                    repo.books.del(books);
                 });
-                repo.books.del(books);
             });
-        });
+        }));
+
+        // Cancel
+        dlg.commands.append(new Windows.UI.Popups.UICommand("Cancel"));
+
+        dlg.showAsync();
     };
 
     function clearDbHandler() {
-        require(['Infra/database'], function (db) {
-            db.clear();
-        });
+        
+            require(['Infra/database'], function (db) {
+                try{
+                    db.clear();
+                    
+                } catch (e) {
+
+                }
+            });
     };
 
     ui.Pages.define("/pages/groupedItems/authorGroups.html", {
