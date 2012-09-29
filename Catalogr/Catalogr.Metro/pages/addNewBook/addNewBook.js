@@ -17,7 +17,7 @@
                         ResponseGroup: 'ItemAttributes,Images'
                     }).then(function (res) {
                         var cover = document.getElementById("cover");
-                        cover.src = res.getLargest()[0].url;
+                        cover.src = res.items[0].images.getLargest()[0].url;
 
                     });
 

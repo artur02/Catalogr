@@ -222,16 +222,56 @@ define(["External/jsSha2/sha2"], function() {
         }
 
         function Item(node) {
-            this.author;
-            this.numberOfPages;
+            function getImages(node) {
+                var small = node.getElementsByTagName("SmallImage");
+                var medium = node.getElementsByTagName("MediumImage");
+                var large = node.getElementsByTagName("LargeImage");
+
+                var smallImages = small.map(function (imageNode) {
+                    return new Image(imageNode);
+                });
+
+                var mediumImages = medium.map(function (imageNode) {
+                    return new Image(imageNode);
+                });
+
+                var largeImages = large.map(function (imageNode) {
+                    return new Image(imageNode);
+                });
+
+                function getLargest() {
+                    if(largeImages) {
+                        return largeImages;
+                    } else if (mediumImages) {
+                        return mediumImages;
+                    } else {
+                        return smallImages;
+                    }
+                }
+
+                return {
+                    small: smallImages,
+                    medium: mediumImages,
+                    large: largeImages,
+
+                    getLargest: getLargest
+                };
+            }
+
+            var publishers = node.getElementsByTagName("Publisher"),
+                eans = node.getElementsByTagName("EAN"),
+                isbns = node.getElementsByTagName("ISBN");
+
+            this.author = node.getElementsByTagName("Author")[0].innerText;
+            this.numberOfPages = node.getElementsByTagName("NumberOfPages")[0].innerText;
             this.title = node.getElementsByTagName("Title")[0].innerText;
-            this.publisher;
-            this.EAN;
-            this.ISBN;
-            this.ASIN;
-            this.providerUrl;
-            this.publicationDate;
-            this.images;
+            this.publisher = publishers.length > 0 ?  publishers[0].innerText : undefined;
+            this.EAN = eans.length > 0 ? eans[0].innerText : undefined;
+            this.ISBN = isbns.length > 0 ? isbns[0].innerText : undefined;
+            this.ASIN = node.getElementsByTagName("ASIN")[0].innerText;
+            this.providerUrl = node.getElementsByTagName("DetailPageURL")[0].innerText;
+            this.publicationDate = node.getElementsByTagName("PublicationDate")[0].innerText;
+            this.images = getImages(node);
         }
 
         function Response(node) {
@@ -280,23 +320,6 @@ define(["External/jsSha2/sha2"], function() {
                 return items;
             }
 
-            function getImages(xmlDoc) {
-                var medium = xmlDoc.getElementsByTagName("MediumImage");
-                var large = xmlDoc.getElementsByTagName("LargeImage");
-
-                var mediumImages = medium.map(function (imageNode) {
-                    return new Image(imageNode);
-                });
-
-                var largeImages = large.map(function (imageNode) {
-                    return new Image(imageNode);
-                });
-
-                return {
-                    medium: mediumImages,
-                    large: largeImages
-                };
-            }
 
             return new WinJS.Promise(function(comp, err) {
 
@@ -319,9 +342,9 @@ define(["External/jsSha2/sha2"], function() {
                         var doc = new Windows.Data.Xml.Dom.XmlDocument();
                         doc.loadXml(xml, loadSettings);
 
-                        //var i = new Response(doc);
+                        var response = new Response(doc);
                                 
-                        comp(new Images(getImages(doc)));
+                        comp(response);
                     },
                     function error(request) {
                         // handle error conditions.
